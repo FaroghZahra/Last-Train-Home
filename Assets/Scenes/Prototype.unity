@@ -270,7 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 14670016}
-  _style: {fileID: 11400000, guid: aa99c9e5231e48ada7236c2c15e36a26, type: 2}
 --- !u!1 &162873689
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,19 +332,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 162873691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Journey, Assembly-CSharp
-        m_MethodName: ToggleFastForward
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &162873691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,19 +453,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 206888023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Journey, Assembly-CSharp
-        m_MethodName: Depart
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &206888023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,19 +594,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 284685992}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RoutePlanner, Assembly-CSharp
-        m_MethodName: Clear
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &284685992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,9 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4cf5984d44bf14494b7e3f6f2099d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _from: {fileID: 0}
-  _to: {fileID: 0}
-  _minutes: 10
+  _line: {fileID: 612563020}
   _minutesLabel: {fileID: 648303848}
   _labelOffset: 0.55
 --- !u!120 &612563020
@@ -1228,13 +1189,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d82dec5fcdbde649842ef0a6057d82d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: Central
-  _displayName: 
   _label: {fileID: 1159216644}
-  _labelDistance: 0.6
   _body: {fileID: 533948894}
   _refusedColor: {r: 1, g: 0.3, b: 0.3, a: 1}
   _refusedFlashSeconds: 0.4
+  _labelDistance: 0.6
 --- !u!58 &644872935
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1774,53 +1733,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667568490}
   m_CullTransparentMesh: 1
---- !u!1 &845990722
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 845990724}
-  - component: {fileID: 845990725}
-  m_Layer: 0
-  m_Name: Journey
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &845990724
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845990722}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &845990725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 845990722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f58e61036891e64fa6fe2ae845b5f54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _routeView: {fileID: 654783668}
-  _secondsPerMinute: 0.1
-  _fastForwardMultiplier: 4
 --- !u!1 &892619734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,41 +2074,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1125939255}
-  - component: {fileID: 1125939254}
+  - component: {fileID: 1125939256}
   m_Layer: 0
-  m_Name: Night Controller
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1125939254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125939253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47fc1ea9e84ed94b9033189fec096b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levels:
-  - {fileID: 4900000, guid: 8be58219a63c97f4b8d2e94624b06e94, type: 3}
-  - {fileID: 4900000, guid: 8eb5a0fdb4f9f934790594d4208ddaad, type: 3}
-  - {fileID: 4900000, guid: 728e9193bb82fbf4b8532edcd231fa9e, type: 3}
-  _railMap: {fileID: 517112863}
-  _routeView: {fileID: 654783668}
-  _journeyPlayer: {fileID: 845990725}
-  _controls: {fileID: 1627950513}
-  _clock: {fileID: 1444014859}
-  _hint: {fileID: 1943104832}
-  _passengerList: {fileID: 1318855349}
-  _arrivalLog: {fileID: 14670017}
-  _summary: {fileID: 1301841185}
-  _arrivalHoldSeconds: 0.6
-  _storyHoldSeconds: 2
 --- !u!4 &1125939255
 Transform:
   m_ObjectHideFlags: 0
@@ -2212,6 +2097,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1125939256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125939253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a732ed4cb803a04aa94c108259733f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levels: {fileID: 11400000, guid: 3fc90963c1b931043b5ce9b2a17845e4, type: 2}
+  _settings: {fileID: 11400000, guid: e1e94c8f3fc9ff34da2040e0e7fb685f, type: 2}
+  _outcomeStyle: {fileID: 11400000, guid: aa99c9e5231e48ada7236c2c15e36a26, type: 2}
+  _railMap: {fileID: 517112863}
+  _route: {fileID: 654783668}
+  _clock: {fileID: 1444014859}
+  _hint: {fileID: 1943104832}
+  _passengers: {fileID: 1318855349}
+  _arrivalLog: {fileID: 14670017}
+  _summary: {fileID: 1301841185}
+  _controls: {fileID: 1627950513}
 --- !u!1 &1151305076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,7 +2619,6 @@ MonoBehaviour:
   _body: {fileID: 1729975691}
   _planAgainButton: {fileID: 1845268034}
   _nextNightButton: {fileID: 206888022}
-  _style: {fileID: 11400000, guid: aa99c9e5231e48ada7236c2c15e36a26, type: 2}
   _bottomPadding: 140
 --- !u!224 &1301841186
 RectTransform:
@@ -2945,7 +2852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rowTemplate: {fileID: 918813355}
-  _style: {fileID: 11400000, guid: aa99c9e5231e48ada7236c2c15e36a26, type: 2}
 --- !u!1 &1347317232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,19 +3254,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1507727281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Journey, Assembly-CSharp
-        m_MethodName: Depart
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1627950508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,23 +3385,6 @@ MonoBehaviour:
   _fastForwardLabel: {fileID: 563083827}
   _fastForwardText: Fast forward
   _normalSpeedText: Normal speed
-  _undoShortcut:
-    m_Name: Undo
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: 1f51f93e-32b6-4e39-bfa7-5e42c415ecec
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 97e10854-a917-408e-9928-8b9e2cab8523
-      m_Path: <Mouse>/rightButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Undo
-      m_Flags: 0
-    m_Flags: 0
 --- !u!1 &1679823275
 GameObject:
   m_ObjectHideFlags: 0
@@ -3590,19 +3467,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1679823278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RoutePlanner, Assembly-CSharp
-        m_MethodName: Undo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1679823278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4050,19 +3915,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1845268035}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RoutePlanner, Assembly-CSharp
-        m_MethodName: Undo
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1845268035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4279,5 +4132,4 @@ SceneRoots:
   - {fileID: 654783667}
   - {fileID: 1731843844}
   - {fileID: 1627950512}
-  - {fileID: 845990724}
   - {fileID: 1125939255}

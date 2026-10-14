@@ -1,0 +1,67 @@
+{
+    "name": "GameControls",
+    "maps": [
+        {
+            "name": "Night",
+            "id": "b24f0f1f-235b-4e20-961e-c44387ec78a3",
+            "actions": [
+                {
+                    "name": "Undo",
+                    "type": "Button",
+                    "id": "bb6296f7-a3e5-4b2d-bd78-f496a61c80a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e5763b62-09c8-413a-8138-9a2187a8ac29",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Ctrl+Z",
+                    "id": "1f68e495-e6be-48d0-8d17-061f041ff961",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "0a5afd39-e897-4390-a6b4-2f94b54eb042",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "3465889e-1af8-448d-b58a-aff021386adc",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Undo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
