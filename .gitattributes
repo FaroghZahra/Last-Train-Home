@@ -1,0 +1,19 @@
+# Keep the repository's LF line endings on every machine (matches .editorconfig).
+* text=auto eol=lf
+
+# Unity YAML: merge as text, never as binary.
+*.unity text eol=lf linguist-generated
+*.prefab text eol=lf linguist-generated
+*.asset text eol=lf linguist-generated
+*.meta text eol=lf linguist-generated
+*.inputactions text eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.psd binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.ttf binary
+*.otf binary

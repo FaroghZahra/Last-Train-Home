@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9c058c164e4a75877a940c59cec907, type: 3}
+  m_Name: OutcomeStyle
+  m_EditorClassIdentifier: 
+  _onTimeColor: {r: 0.45, g: 0.85, b: 0.5, a: 1}
+  _lateColor: {r: 1, g: 0.7, b: 0.3, a: 1}
+  _notReachedColor: {r: 0.55, g: 0.58, b: 0.65, a: 1}
+  _storyColor: {r: 0.7, g: 0.74, b: 0.82, a: 1}
+  _storyTextScale: 0.8

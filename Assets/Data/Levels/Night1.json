@@ -1,0 +1,37 @@
+{
+    "title": "Night 1",
+    "startStation": "Central",
+    "departure": "00:00",
+    "closing": "01:00",
+    "stations": [
+        { "id": "Old Town", "label": "left", "x": -2.0, "y": 0.0 },
+        { "id": "Central", "x": 1.5, "y": 0.0 },
+        { "id": "Market", "label": "right", "x": 5.0, "y": 0.0 },
+        { "id": "Harbour", "x": 5.0, "y": 3.0 }
+    ],
+    "tracks": [
+        { "from": "Central", "to": "Old Town", "minutes": 10 },
+        { "from": "Central", "to": "Market", "minutes": 10 },
+        { "from": "Market", "to": "Harbour", "minutes": 10 }
+    ],
+    "passengers": [
+        {
+            "name": "Mina",
+            "destination": "Harbour",
+            "deadline": "00:20",
+            "motivation": "Twelve-hour shift. I told the babysitter twenty past.",
+            "onTime": "The babysitter caught the last bus. Nobody woke.",
+            "late": "The babysitter waited by the door, coat on, saying nothing.",
+            "notReached": "She walked the last mile in her work shoes."
+        },
+        {
+            "name": "Dev",
+            "destination": "Old Town",
+            "deadline": "00:50",
+            "motivation": "Exam at nine. I just need my own bed.",
+            "onTime": "He was asleep before his shoes were off.",
+            "late": "He lay awake until two, reciting dates.",
+            "notReached": "He slept on a friend's sofa, alarm set for six."
+        }
+    ]
+}

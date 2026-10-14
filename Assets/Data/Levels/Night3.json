@@ -1,0 +1,62 @@
+{
+    "title": "Night 3",
+    "startStation": "Central",
+    "departure": "00:00",
+    "closing": "01:00",
+    "stations": [
+        { "id": "Hillside", "label": "left", "x": -0.8, "y": -0.8 },
+        { "id": "Old Town", "x": 2.0, "y": 2.2 },
+        { "id": "Riverside", "label": "below", "x": 2.0, "y": -0.8 },
+        { "id": "Market", "label": "below", "x": 1.2, "y": -2.9 },
+        { "id": "Central", "label": "right", "x": 5.5, "y": 0.0 },
+        { "id": "Harbour", "x": 5.5, "y": 3.0 }
+    ],
+    "tracks": [
+        { "from": "Central", "to": "Harbour", "minutes": 10 },
+        { "from": "Central", "to": "Old Town", "minutes": 10 },
+        { "from": "Central", "to": "Riverside", "minutes": 10 },
+        { "from": "Central", "to": "Market", "minutes": 15 },
+        { "from": "Old Town", "to": "Riverside", "minutes": 10 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 10 },
+        { "from": "Riverside", "to": "Hillside", "minutes": 10 },
+        { "from": "Market", "to": "Hillside", "minutes": 10 }
+    ],
+    "passengers": [
+        {
+            "name": "Agnes",
+            "destination": "Harbour",
+            "deadline": "00:25",
+            "motivation": "The night post boat takes parcels until half past.",
+            "onTime": "The parcel went over the water, addressed in her best hand.",
+            "late": "The post boat's lights were already small. Monday, then.",
+            "notReached": "She carried the parcel home again, under her arm."
+        },
+        {
+            "name": "Tomás",
+            "destination": "Hillside",
+            "deadline": "00:45",
+            "motivation": "Back on nights. They're watching the clock now.",
+            "onTime": "He clocked in early and nobody said a word. Good.",
+            "late": "His name went in the book. Pencil, for now.",
+            "notReached": "He ran the last stretch and still didn't make it."
+        },
+        {
+            "name": "Priya",
+            "destination": "Old Town",
+            "deadline": "00:40",
+            "motivation": "Second gig, smaller bar. Doors at twenty to.",
+            "onTime": "Twelve people came. Two of them knew the words.",
+            "late": "They played two songs before the bar closed. Both were good.",
+            "notReached": "The band played without her. They kept her mic on the stand."
+        },
+        {
+            "name": "Wen",
+            "destination": "Riverside",
+            "deadline": "00:30",
+            "motivation": "Dad's care home locks the doors at half past.",
+            "onTime": "He was still awake. They did the crossword together.",
+            "late": "The night nurse let her wave through the glass.",
+            "notReached": "She phoned instead. He thought she was her mother."
+        }
+    ]
+}

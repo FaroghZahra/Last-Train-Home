@@ -1,0 +1,49 @@
+{
+    "title": "Night 2",
+    "startStation": "Central",
+    "departure": "00:00",
+    "closing": "01:00",
+    "stations": [
+        { "id": "Old Town", "label": "left", "x": -2.0, "y": 0.0 },
+        { "id": "Central", "x": 1.5, "y": 0.0 },
+        { "id": "Market", "label": "right", "x": 5.0, "y": 0.0 },
+        { "id": "Harbour", "x": 5.0, "y": 3.0 },
+        { "id": "Hillside", "label": "below", "x": 5.0, "y": -3.0 }
+    ],
+    "tracks": [
+        { "from": "Central", "to": "Old Town", "minutes": 10 },
+        { "from": "Central", "to": "Market", "minutes": 10 },
+        { "from": "Market", "to": "Harbour", "minutes": 10 },
+        { "from": "Market", "to": "Hillside", "minutes": 10 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 20 }
+    ],
+    "passengers": [
+        {
+            "name": "Agnes",
+            "destination": "Harbour",
+            "deadline": "00:40",
+            "motivation": "My grandson's ferry leaves at quarter to. I finished his scarf.",
+            "onTime": "She reached the gangway with a minute to spare. The scarf is very long.",
+            "late": "The ferry was already lights on the water. She'll post it tomorrow.",
+            "notReached": "She got off at the last stop and stood for a while."
+        },
+        {
+            "name": "Tomás",
+            "destination": "Hillside",
+            "deadline": "00:40",
+            "motivation": "Night baker. Third late shift this month and they'll stop asking why.",
+            "onTime": "Ovens on at 00:45. The first loaf is always his.",
+            "late": "The manager said nothing. That was worse.",
+            "notReached": "He called in. He's never called in before."
+        },
+        {
+            "name": "Priya",
+            "destination": "Old Town",
+            "deadline": "00:30",
+            "motivation": "Our band's first real gig. We're on at half past.",
+            "onTime": "They opened with the song she wrote on this train.",
+            "late": "They let her band play last, to six people. She says it still counted.",
+            "notReached": "She heard the set on a friend's phone, on the platform."
+        }
+    ]
+}
