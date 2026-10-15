@@ -73,7 +73,8 @@ namespace LastTrainHome.Domain.Nights
         {
             try
             {
-                return new RailNetwork(stations.Select(station => station.Id), tracks);
+                return new RailNetwork(stations.Select(station => station.Id), tracks,
+                    stations.Where(station => station.IsClosed).Select(station => station.Id));
             }
             catch (ArgumentException exception)
             {
@@ -110,6 +111,15 @@ namespace LastTrainHome.Domain.Nights
                 if (Network != null && !Network.ContainsStation(passenger.DestinationStationId))
                 {
                     problems.Add($"{passenger.Name}: destination '{passenger.DestinationStationId}' is not on the map.");
+                }
+
+                if (Network != null && passenger.IsPickup && !Network.ContainsStation(passenger.OriginStationId))
+                {
+                    problems.Add($"{passenger.Name}: boards at '{passenger.OriginStationId}', which is not on the map.");
+                }
+                else if (Network != null && passenger.IsPickup && Network.IsClosed(passenger.OriginStationId))
+                {
+                    problems.Add($"{passenger.Name}: boards at '{passenger.OriginStationId}', which is closed tonight.");
                 }
             }
         }

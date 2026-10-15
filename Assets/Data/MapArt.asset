@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd74d7fcb116c84bab27dee3ba59acc, type: 3}
+  m_Name: MapArt
+  m_EditorClassIdentifier: 
+  _stations:
+  - StationId: Central
+    Building: {fileID: 21300000, guid: d2f30fa9127f1c240b88944e470a078a, type: 3}
+  - StationId: Harbour
+    Building: {fileID: 21300000, guid: a0c16f63795b1e8419e1d393b346181a, type: 3}
+  - StationId: Hillside
+    Building: {fileID: 21300000, guid: 431a3939a8bc0d04299fbbd91a89ac1e, type: 3}
+  - StationId: Market
+    Building: {fileID: 21300000, guid: f265eb0152b4c664181b00f776c4e158, type: 3}
+  - StationId: Old Town
+    Building: {fileID: 21300000, guid: 05843f0cac86005429c18307901a319f, type: 3}
+  - StationId: Riverside
+    Building: {fileID: 21300000, guid: 07de4ca745d88eb4faba3d23f3bb14fb, type: 3}

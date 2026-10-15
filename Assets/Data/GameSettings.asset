@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ce749e81127084888fa6470624f553, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  _secondsPerMinute: 0.1
+  _secondsPerMinute: 0.25
   _fastForwardMultiplier: 4
   _arrivalHoldSeconds: 0.6
   _storyHoldSeconds: 2

@@ -36,3 +36,7 @@ sysinfo.txt
 # OS
 .DS_Store
 Thumbs.db
+
+# Design docs and tools (kept local)
+/Assets/Design/
+/Assets/Design.meta

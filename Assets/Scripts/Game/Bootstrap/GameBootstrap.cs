@@ -13,8 +13,9 @@ using Object = UnityEngine.Object;
 namespace LastTrainHome.Game.Bootstrap
 {
     /// <summary>
-    /// The composition root: the one place that knows every piece. Builds the plain C# game objects, hands them the
-    /// scene's views, drives them each frame and tears them down. Nothing else holds cross-object references.
+    /// The composition root: the one place that knows every piece. Loads the content, builds the plain C# game
+    /// objects, hands them the scene's views, drives them each frame and tears them down. Nothing else holds
+    /// cross-object references.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class GameBootstrap : MonoBehaviour
@@ -22,17 +23,21 @@ namespace LastTrainHome.Game.Bootstrap
         [Header("Content")]
         [SerializeField] private LevelCatalog _levels;
         [SerializeField] private GameSettings _settings;
-        [SerializeField] private OutcomeStyle _outcomeStyle;
 
-        [Header("Views")]
+        [Header("Map")]
         [SerializeField] private RailMapView _railMap;
         [SerializeField] private RouteView _route;
-        [SerializeField] private ClockView _clock;
-        [SerializeField] private HintView _hint;
-        [SerializeField] private PassengerListView _passengers;
-        [SerializeField] private ArrivalLogView _arrivalLog;
-        [SerializeField] private SummaryView _summary;
-        [SerializeField] private ControlsView _controls;
+
+        [Header("Screens")]
+        [SerializeField] private TitleScreenView _title;
+        [SerializeField] private NightCardView _nightCard;
+        [SerializeField] private PlatformView _platform;
+        [SerializeField] private PlanView _plan;
+        [SerializeField] private RideView _ride;
+        [SerializeField] private LogbookView _logbook;
+
+        [SerializeField, Tooltip("Optional; the game is silent without it.")]
+        private AudioView _audio;
 
         private GameInput _input;
         private GameFlow _flow;
@@ -43,15 +48,24 @@ namespace LastTrainHome.Game.Bootstrap
             if (missing.Length > 0)
             {
                 Fail($"{nameof(GameBootstrap)} on '{name}' is missing: {string.Join(", ", missing)}.");
+                return;
             }
+
+            // Every screen starts hidden; the flow shows them one at a time.
+            _nightCard.Hide();
+            _platform.Hide();
+            _plan.Hide();
+            _ride.Hide();
+            _logbook.Hide();
+            _title.Hide();
         }
 
         private void Start()
         {
-            IReadOnlyList<Level> levels;
+            GameContent content;
             try
             {
-                levels = _levels.LoadLevels();
+                content = _levels.LoadContent();
             }
             catch (FormatException exception)
             {
@@ -59,9 +73,10 @@ namespace LastTrainHome.Game.Bootstrap
                 return;
             }
 
-            var views = new NightViews(_railMap, _route, _clock, _hint, _passengers, _arrivalLog, _summary, _controls);
+            var views = new GameViews(_railMap, _route, _title, _nightCard, _platform, _plan, _ride, _logbook);
             _input = new GameInput();
-            _flow = new GameFlow(levels, views, new NightText(_outcomeStyle), _settings, _input);
+            _flow = new GameFlow(content, views, _settings, _input, new Persistence.PlayerPrefsProgressStore(),
+                _audio != null ? _audio : null);
             _flow.Start();
         }
 
@@ -77,10 +92,10 @@ namespace LastTrainHome.Game.Bootstrap
         {
             var references = new (Object value, string field)[]
             {
-                (_levels, nameof(_levels)), (_settings, nameof(_settings)), (_outcomeStyle, nameof(_outcomeStyle)),
-                (_railMap, nameof(_railMap)), (_route, nameof(_route)), (_clock, nameof(_clock)), (_hint, nameof(_hint)),
-                (_passengers, nameof(_passengers)), (_arrivalLog, nameof(_arrivalLog)), (_summary, nameof(_summary)),
-                (_controls, nameof(_controls)),
+                (_levels, nameof(_levels)), (_settings, nameof(_settings)), (_railMap, nameof(_railMap)),
+                (_route, nameof(_route)), (_title, nameof(_title)), (_nightCard, nameof(_nightCard)),
+                (_platform, nameof(_platform)), (_plan, nameof(_plan)), (_ride, nameof(_ride)),
+                (_logbook, nameof(_logbook)),
             };
             return references.Where(reference => reference.value == null).Select(reference => reference.field);
         }

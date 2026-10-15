@@ -7,5 +7,6 @@ namespace LastTrainHome.Domain.Routing
         AlreadyAtStation,
         NoTrack,
         PastClosing,
+        StationClosed,
     }
 }

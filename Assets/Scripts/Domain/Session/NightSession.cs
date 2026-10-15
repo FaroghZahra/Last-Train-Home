@@ -8,7 +8,7 @@ using LastTrainHome.Domain.Routing;
 namespace LastTrainHome.Domain.Session
 {
     /// <summary>
-    /// One play of a night: plan a route, depart, finish, and optionally plan again.
+    /// One play of a night: promise someone, plan a route, depart, finish, and optionally plan again.
     /// Route edits are only allowed while planning; calling a step out of order is a programming error and throws.
     /// </summary>
     public sealed class NightSession
@@ -42,8 +42,40 @@ namespace LastTrainHome.Domain.Session
 
         public bool CanDepart => Phase == NightPhase.Planning && _route.HasLeftStart;
 
+        /// <summary>Who the player has promised to get there on time, or null.</summary>
+        public string PromisedPassenger { get; private set; }
+
         /// <summary>What the current route means for each passenger, in the night's passenger order.</summary>
         public IReadOnlyList<PassengerOutcome> Outcomes => _outcomes;
+
+        /// <summary>Makes (or, with null, withdraws) tonight's promise. It can change until the train departs.</summary>
+        /// <exception cref="ArgumentException">They aren't riding tonight.</exception>
+        /// <exception cref="InvalidOperationException">Not planning.</exception>
+        public void Promise(string passengerName)
+        {
+            RequirePhase(NightPhase.Planning);
+            if (passengerName != null && Night.Passengers.All(passenger => passenger.Name != passengerName))
+            {
+                throw new ArgumentException($"'{passengerName}' isn't riding tonight.", nameof(passengerName));
+            }
+
+            PromisedPassenger = passengerName;
+        }
+
+        /// <summary>How the current route treats one passenger.</summary>
+        /// <exception cref="ArgumentException">They aren't riding tonight.</exception>
+        public PassengerOutcome GetOutcome(string passengerName)
+        {
+            for (int i = 0; i < Night.Passengers.Count; i++)
+            {
+                if (Night.Passengers[i].Name == passengerName)
+                {
+                    return _outcomes[i];
+                }
+            }
+
+            throw new ArgumentException($"'{passengerName}' isn't riding tonight.", nameof(passengerName));
+        }
 
         /// <exception cref="InvalidOperationException">Not planning.</exception>
         public AddStopResult TryAddStop(string stationId)
@@ -84,7 +116,8 @@ namespace LastTrainHome.Domain.Session
         {
             RequirePhase(NightPhase.Travelling);
             SetPhase(NightPhase.Finished);
-            return new NightResult(Night.Id, _route.Stops.ToArray(), _outcomes);
+            return new NightResult(Night.Id, _route.Stops.ToArray(), _outcomes,
+                Night.Passengers.Select(passenger => passenger.Name).ToArray(), PromisedPassenger);
         }
 
         /// <summary>Starts planning again from the start station.</summary>

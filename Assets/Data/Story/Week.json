@@ -1,0 +1,60 @@
+{
+    "title": "Last Train Home",
+    "intro": [ "The Northline closes on Friday. You drive its last train, five nights running.", "Four regulars. Each has one night this week that matters more than any other." ],
+    "introEmphasis": "Get them home on the night it counts.",
+    "footnote": "About 15 minutes · mouse only · no saving needed",
+    "days": [ "Mon", "Tue", "Wed", "Thu", "Fri" ],
+    "cast": [
+        {
+            "name": "Tomás",
+            "bigNight": 1,
+            "bigNightLabel": "Final warning",
+            "epilogueKept": "Tomás worked his last week without a mark in the book, and left with a reference he keeps in a frame.",
+            "epilogueMissed": "Tomás lost the job on Tuesday. The new bakery took him on anyway. He says the sun is overrated."
+        },
+        {
+            "name": "Agnes",
+            "bigNight": 2,
+            "bigNightLabel": "Grandson's ferry",
+            "epilogueKept": "Agnes's grandson wears the red scarf in every photo he sends from over the water.",
+            "epilogueMissed": "The scarf reached Agnes's grandson by post, a week late. He wears it anyway, she's told."
+        },
+        {
+            "name": "Priya",
+            "bigNight": 3,
+            "bigNightLabel": "First real gig",
+            "epilogueKept": "Priya's band plays Northline at every gig now. Her mum hasn't missed one.",
+            "epilogueMissed": "Priya wrote another song. It's about a train that didn't come. It's her best one."
+        },
+        {
+            "name": "Wen",
+            "bigNight": 4,
+            "bigNightLabel": "Dad's 80th",
+            "epilogueKept": "Wen's dad blew out one candle of eighty. Close enough, he said, and asked for more cake.",
+            "epilogueMissed": "Wen's dad slept through his eightieth. She kept him a slice, and the candle."
+        },
+        { "name": "Dev", "bigNight": -1, "bigNightLabel": "" },
+        { "name": "Mina", "bigNight": -1, "bigNightLabel": "" }
+    ],
+    "keepsakes": [
+        { "id": "setlist", "name": "Priya's setlist", "line": "Keepsake: her setlist, taped to your cab window." },
+        { "id": "loaf", "name": "Tomás's loaf", "line": "Tomorrow: a paper bag on your seat. “For the driver.”" },
+        { "id": "wool", "name": "Red wool scrap", "line": "Keepsake: a scrap of red wool, tied to the brake handle." },
+        { "id": "lyrics", "name": "Priya's lyric sheet", "line": "Keepsake: the chorus, finished, on the back of a ticket." },
+        { "id": "ferry", "name": "Ferry ticket stub", "line": "Keepsake: a ferry ticket stub. “For your window.”" },
+        { "id": "flyer", "name": "Priya's flyer", "line": "Keepsake: a flyer for Thursday, the last one left." },
+        { "id": "ticket", "name": "Gig ticket", "line": "Keepsake: a gig ticket on your seat. “Admit one driver.”" },
+        { "id": "candle", "name": "Birthday candle", "line": "Keepsake: a burnt-down birthday candle. “He blew it out.”" },
+        { "id": "lantern", "name": "Railwayman's lantern", "line": "Keepsake: an old railwayman's lantern from the Old Town platform, still lit." },
+        { "id": "ribbon", "name": "Market ribbon", "line": "Keepsake: a length of the ribbon they cut to reopen Market." },
+        { "id": "lighthouse", "name": "Lighthouse postcard", "line": "Keepsake: a postcard from the lighthouse keeper. “For the last train.”" },
+        { "id": "photo", "name": "Old photograph", "line": "Keepsake: a photo of the Northline's first train, from the care home's wall." }
+    ],
+    "endings": [
+        { "kept": 4, "title": "Every one of them", "line": "You kept all four big nights. It cost you plenty of small ones, and they all forgave you." },
+        { "kept": 3, "title": "Three of four", "line": "Three big nights kept. The fourth still rides with you, some nights." },
+        { "kept": 2, "title": "Half the week", "line": "Two big nights kept, two let go. Nobody could have done it all. You did what you could." },
+        { "kept": 1, "title": "One night", "line": "One big night kept. You got a lot of people home on the small ones, though." },
+        { "kept": 0, "title": "The long way home", "line": "Every big night slipped past. You still drove them, every night, to the very last train." }
+    ]
+}

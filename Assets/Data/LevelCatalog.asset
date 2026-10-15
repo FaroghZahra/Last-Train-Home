@@ -16,3 +16,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 8be58219a63c97f4b8d2e94624b06e94, type: 3}
   - {fileID: 4900000, guid: 8eb5a0fdb4f9f934790594d4208ddaad, type: 3}
   - {fileID: 4900000, guid: 728e9193bb82fbf4b8532edcd231fa9e, type: 3}
+  - {fileID: 4900000, guid: 6323376df301c7b45ab1888aaa511415, type: 3}
+  - {fileID: 4900000, guid: 9b536259c44012246856400b01ed72db, type: 3}
+  _week: {fileID: 4900000, guid: 7a5a5a342fda7d74f81f08d1820bfdbb, type: 3}
+  _uiText: {fileID: 4900000, guid: 942e136b13db8e1478978a47c228f47b, type: 3}

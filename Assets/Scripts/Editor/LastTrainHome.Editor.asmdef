@@ -1,0 +1,21 @@
+{
+    "name": "LastTrainHome.Editor",
+    "rootNamespace": "LastTrainHome.Editor",
+    "references": [
+        "LastTrainHome.Domain",
+        "LastTrainHome.Game",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

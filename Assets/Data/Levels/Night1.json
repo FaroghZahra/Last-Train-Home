@@ -1,37 +1,95 @@
 {
-    "title": "Night 1",
+    "title": "Monday",
     "startStation": "Central",
     "departure": "00:00",
     "closing": "01:00",
     "stations": [
-        { "id": "Old Town", "label": "left", "x": -2.0, "y": 0.0 },
-        { "id": "Central", "x": 1.5, "y": 0.0 },
-        { "id": "Market", "label": "right", "x": 5.0, "y": 0.0 },
-        { "id": "Harbour", "x": 5.0, "y": 3.0 }
+        { "id": "Old Town", "x": -3.6, "y": 1.6 },
+        { "id": "Central", "x": -0.1, "y": 0.2 },
+        { "id": "Riverside", "label": "right", "x": -1.2, "y": -1.3 },
+        { "id": "Hillside", "label": "below", "x": -1.5, "y": -3.2 },
+        { "id": "Market", "label": "right", "x": 2.6, "y": -2.3, "closed": true },
+        { "id": "Harbour", "x": 4.6, "y": -0.55 }
     ],
     "tracks": [
-        { "from": "Central", "to": "Old Town", "minutes": 10 },
-        { "from": "Central", "to": "Market", "minutes": 10 },
-        { "from": "Market", "to": "Harbour", "minutes": 10 }
+        { "from": "Central", "to": "Harbour", "minutes": 10 },
+        { "from": "Central", "to": "Old Town", "minutes": 10, "via": [ { "x": -2.58, "y": 1.92 } ] },
+        { "from": "Central", "to": "Riverside", "minutes": 10 },
+        { "from": "Old Town", "to": "Riverside", "minutes": 10 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 10 },
+        { "from": "Riverside", "to": "Hillside", "minutes": 10 },
+        { "from": "Central", "to": "Market", "minutes": 15, "closed": true }
     ],
+    "rules": { "asks": -1 },
+    "nightCard": {
+        "kicker": "Night {night} of {nights} · the Northline's last week",
+        "lines": [ "Four regulars are waiting at Central.", "Tonight, there's a way to get every one of them home on time." ],
+        "footnote": "Ask your passengers how they are. Their answers fill in the week."
+    },
+    "platform": {
+        "kicker": "{day} · Night {night} of {nights} · Central, 23:58",
+        "headline": "Meet your regulars before you plan.",
+        "coach": "Tonight you can ask everyone. From Tuesday it's one question a night. Then promise one of them: “I'll get you there.”"
+    },
     "passengers": [
         {
-            "name": "Mina",
-            "destination": "Harbour",
+            "name": "Priya",
+            "destination": "Old Town",
             "deadline": "00:20",
-            "motivation": "Twelve-hour shift. I told the babysitter twenty past.",
-            "onTime": "The babysitter caught the last bus. Nobody woke.",
-            "late": "The babysitter waited by the door, coat on, saying nothing.",
-            "notReached": "She walked the last mile in her work shoes."
+            "platform": "Rehearsal at twenty past. The drummer's never early, but still.",
+            "planQuote": "Rehearsal at twenty past.",
+            "ask": "We've got a real gig on Thursday. Our first. Don't tell anyone I'm terrified.",
+            "revealsBigNight": true,
+            "onTime": { "line": "The drummer was late. She'd already tuned.", "keepsake": "setlist", "aside": "Agnes waves her out of the window." },
+            "late": { "line": "They started without her. She sang the bridge from the doorway." },
+            "notReached": { "line": "She rehearsed alone on the platform, quietly." }
         },
         {
-            "name": "Dev",
-            "destination": "Old Town",
-            "deadline": "00:50",
-            "motivation": "Exam at nine. I just need my own bed.",
-            "onTime": "He was asleep before his shoes were off.",
-            "late": "He lay awake until two, reciting dates.",
-            "notReached": "He slept on a friend's sofa, alarm set for six."
+            "name": "Tomás",
+            "destination": "Hillside",
+            "deadline": "00:30",
+            "platform": "Hillside, please. They've started writing the times down.",
+            "planQuote": "They've started writing the times down.",
+            "ask": "Third late this month. Tomorrow they're watching properly.",
+            "revealsBigNight": true,
+            "onTime": { "line": "Clocked in at 00:20. The book stayed shut." },
+            "late": { "line": "His name went in the book. Pencil, for now.", "carry": "Tomás has been told to come in early tomorrow. His deadline is tighter." },
+            "notReached": { "line": "He ran from the last stop. Still too late.", "carry": "Tomás has been told to come in early tomorrow. His deadline is tighter." }
+        },
+        {
+            "name": "Wen",
+            "destination": "Riverside",
+            "deadline": "00:40",
+            "platform": "Riverside. The care home locks the door at twenty to.",
+            "planQuote": "The door locks at twenty to.",
+            "ask": "Dad's eighty on Friday. He keeps asking what day it is, so I keep telling him.",
+            "revealsBigNight": true,
+            "onTime": { "line": "He was asleep. She left the crossword by his glasses." },
+            "late": { "line": "The night nurse let her wave through the glass." },
+            "notReached": { "line": "She phoned. He thought she was her mother." }
+        },
+        {
+            "name": "Agnes",
+            "destination": "Harbour",
+            "deadline": "00:55",
+            "platform": "No hurry for me, love. Harbour, whenever.",
+            "planQuote": "No hurry for me, love.",
+            "ask": "My grandson's ferry leaves on Wednesday. I've a scarf to finish.",
+            "revealsBigNight": true,
+            "onTime": { "line": "She knitted the whole way. Half a sleeve left." },
+            "late": { "line": "She didn't mind. She says the train is warmer than home." },
+            "notReached": { "line": "She took a taxi and told nobody." }
         }
-    ]
+    ],
+    "coach": [
+        { "when": "empty", "text": "The train is at Central. Click a glowing station joined to it. Each stop costs 10 minutes." },
+        { "when": "allOnTime", "text": "Everyone makes it. Press Depart when you're ready. Once the train leaves, the night plays out." },
+        { "when": "anyLate", "text": "{late} would be late. Undo and try the earliest deadline first." },
+        { "when": "deadEnd", "station": "Harbour", "text": "Harbour is a dead end. You'd have to come back through Central. Try leaving it for last." },
+        { "when": "stops", "count": 2, "text": "Each card now shows when they'd arrive. Green is on time; the dot on the bar is their arrival, the line is their deadline." },
+        { "when": "always", "text": "Good. Still waiting: {waiting}. {nextDeadline}'s deadline is next." }
+    ],
+    "logbook": {
+        "tomorrow": "Tuesday is Tomás's big night. The driver's radio crackles: “Heads up. Tomorrow's a tight one.”"
+    }
 }

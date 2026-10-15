@@ -118,5 +118,24 @@ namespace LastTrainHome.Domain.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => new JourneyTimeline(Stops, new[] { 0f, -1f, 0f }, SecondsPerMinute));
             Assert.Throws<ArgumentOutOfRangeException>(() => new JourneyTimeline(Stops, new float[3], 0f));
         }
+
+        [Test]
+        public void AnEndlessHold_WaitsUntilReleased()
+        {
+            JourneyTimeline timeline = Create(0f, float.PositiveInfinity, 0f);
+            timeline.Start();
+
+            timeline.Advance(1f); // reaches Market
+            timeline.Advance(100f);
+            Assert.That(timeline.IsWaiting, Is.True);
+            Assert.That(timeline.CurrentLeg.FromStopIndex, Is.EqualTo(1));
+
+            timeline.ReleaseHold();
+            Assert.That(timeline.IsWaiting, Is.False);
+            timeline.Advance(1f);
+
+            Assert.That(timeline.IsComplete, Is.True);
+            Assert.That(_events, Does.Contain("stop 2"));
+        }
     }
 }

@@ -5,8 +5,9 @@ using LastTrainHome.Domain.Routing;
 namespace LastTrainHome.Domain.Passengers
 {
     /// <summary>
-    /// Decides each passenger's outcome. The first time the route reaches a passenger's destination is when they
-    /// get off; later visits to that station don't change anything.
+    /// Decides each passenger's outcome. Someone who boards at the start is aboard from the first stop; a pickup boards
+    /// the first time the route reaches their station. The first time the route reaches their destination after that
+    /// is when they get off; later visits change nothing. A pickup the train never collects is not reached.
     /// </summary>
     public static class OutcomeEvaluator
     {
@@ -22,15 +23,20 @@ namespace LastTrainHome.Domain.Passengers
                 throw new ArgumentNullException(nameof(stops));
             }
 
-            for (int i = 0; i < stops.Count; i++)
+            int boardIndex = 0;
+            if (passenger.IsPickup)
             {
-                if (string.Equals(stops[i].StationId, passenger.DestinationStationId, StringComparison.Ordinal))
+                boardIndex = IndexOf(stops, passenger.OriginStationId, 0);
+                if (boardIndex < 0)
                 {
-                    return PassengerOutcome.Reached(i, stops[i].Arrival, passenger.Deadline);
+                    return PassengerOutcome.NotReached(-1);
                 }
             }
 
-            return PassengerOutcome.NotReached();
+            int arrivalIndex = IndexOf(stops, passenger.DestinationStationId, passenger.IsPickup ? boardIndex + 1 : 0);
+            return arrivalIndex < 0
+                ? PassengerOutcome.NotReached(boardIndex)
+                : PassengerOutcome.Reached(boardIndex, arrivalIndex, stops[arrivalIndex].Arrival, passenger.Deadline);
         }
 
         /// <summary>Evaluates every passenger. Results are in the same order as <paramref name="passengers"/>.</summary>
@@ -48,6 +54,19 @@ namespace LastTrainHome.Domain.Passengers
             }
 
             return outcomes;
+        }
+
+        private static int IndexOf(IReadOnlyList<RouteStop> stops, string stationId, int from)
+        {
+            for (int i = from; i < stops.Count; i++)
+            {
+                if (string.Equals(stops[i].StationId, stationId, StringComparison.Ordinal))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

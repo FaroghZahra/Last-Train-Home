@@ -1,49 +1,120 @@
 {
-    "title": "Night 2",
+    "title": "Tuesday",
     "startStation": "Central",
     "departure": "00:00",
     "closing": "01:00",
     "stations": [
-        { "id": "Old Town", "label": "left", "x": -2.0, "y": 0.0 },
-        { "id": "Central", "x": 1.5, "y": 0.0 },
-        { "id": "Market", "label": "right", "x": 5.0, "y": 0.0 },
-        { "id": "Harbour", "x": 5.0, "y": 3.0 },
-        { "id": "Hillside", "label": "below", "x": 5.0, "y": -3.0 }
+        { "id": "Old Town", "x": -3.6, "y": 1.6 },
+        { "id": "Central", "x": -0.1, "y": 0.2 },
+        { "id": "Riverside", "label": "right", "x": -1.2, "y": -1.3 },
+        { "id": "Hillside", "label": "below", "x": -1.5, "y": -3.2 },
+        { "id": "Market", "label": "right", "x": 2.6, "y": -2.3, "closed": true },
+        { "id": "Harbour", "x": 4.6, "y": -0.55 }
     ],
     "tracks": [
-        { "from": "Central", "to": "Old Town", "minutes": 10 },
-        { "from": "Central", "to": "Market", "minutes": 10 },
-        { "from": "Market", "to": "Harbour", "minutes": 10 },
-        { "from": "Market", "to": "Hillside", "minutes": 10 },
-        { "from": "Old Town", "to": "Hillside", "minutes": 20 }
+        { "from": "Central", "to": "Harbour", "minutes": 10 },
+        { "from": "Central", "to": "Old Town", "minutes": 5, "via": [ { "x": -2.58, "y": 1.92 } ] },
+        { "from": "Central", "to": "Riverside", "minutes": 10 },
+        { "from": "Old Town", "to": "Riverside", "minutes": 20 },
+        { "from": "Riverside", "to": "Hillside", "minutes": 15 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 10, "closed": true },
+        { "from": "Central", "to": "Market", "minutes": 15, "closed": true }
     ],
+    "rules": { "asks": 1 },
+    "nightCard": {
+        "kicker": "Night {night} of {nights}",
+        "featured": "Tomás",
+        "featuredLine": "Tonight is Tomás's final warning.",
+        "lines": [ "A tree's down on the Old Town–Hillside line. Tonight Hillside is only reachable from Riverside.", "Not everyone will make it home on time." ],
+        "emphasis": "You decide who waits.",
+        "footnote": "Rumour on the line: someone leaves a lantern lit at Old Town, but only for the first train through."
+    },
+    "platform": {
+        "kicker": "{day} · Night {night} of {nights} · Central, 23:58",
+        "headline": "Tonight, someone will wait.",
+        "coach": "One question tonight. People don't always tell you everything until you ask. Your promise is what you'll be held to."
+    },
     "passengers": [
-        {
-            "name": "Agnes",
-            "destination": "Harbour",
-            "deadline": "00:40",
-            "motivation": "My grandson's ferry leaves at quarter to. I finished his scarf.",
-            "onTime": "She reached the gangway with a minute to spare. The scarf is very long.",
-            "late": "The ferry was already lights on the water. She'll post it tomorrow.",
-            "notReached": "She got off at the last stop and stood for a while."
-        },
         {
             "name": "Tomás",
             "destination": "Hillside",
-            "deadline": "00:40",
-            "motivation": "Night baker. Third late shift this month and they'll stop asking why.",
-            "onTime": "Ovens on at 00:45. The first loaf is always his.",
-            "late": "The manager said nothing. That was worse.",
-            "notReached": "He called in. He's never called in before."
+            "deadline": "00:45",
+            "platform": "Hillside. Tonight of all nights.",
+            "planQuote": "Tonight of all nights.",
+            "ask": "One more late and I'm done. Eleven years, and I've never once called in.",
+            "onTime": { "line": "Clocked in at quarter to, on the dot. Nobody said a word. Good.", "logLine": "Quarter to, on the dot. Nobody said a word.", "keepsake": "loaf" },
+            "late": { "line": "The manager said nothing. Then: “Friday's your last shift.”", "carry": "Friday becomes Tomás's last shift. He'll still ride." },
+            "notReached": { "line": "He called in. He's never called in before.", "carry": "Friday becomes Tomás's last shift. He'll still ride." }
+        },
+        {
+            "name": "Agnes",
+            "destination": "Harbour",
+            "deadline": "00:45",
+            "says": "00:55",
+            "platform": "Harbour, love. No rush.",
+            "planQuote": "No rush, love.",
+            "ask": "Well. The wool shop shuts at quarter to. One sleeve left, and if I miss it, it's the old grey. He hates grey.",
+            "onTime": {
+                "line": "The shopkeeper was pulling the shutter. She held up the last sleeve, and he let her in.",
+                "logLine": "He was pulling the shutter. He let her in.",
+                "keepsake": "wool",
+                "weekNote": "Scarf: red."
+            },
+            "late": { "line": "Shutter down. She'll finish it in the old grey.", "weekNote": "Scarf: grey.", "carry": "Agnes will finish the scarf in grey, and she'll say so." },
+            "notReached": { "line": "She went home and unpicked her own cardigan for the wool.", "weekNote": "Scarf: grey.", "carry": "Agnes will finish the scarf in grey, and she'll say so." }
         },
         {
             "name": "Priya",
             "destination": "Old Town",
-            "deadline": "00:30",
-            "motivation": "Our band's first real gig. We're on at half past.",
-            "onTime": "They opened with the song she wrote on this train.",
-            "late": "They let her band play last, to six people. She says it still counted.",
-            "notReached": "She heard the set on a friend's phone, on the platform."
+            "deadline": "00:45",
+            "platform": "Mind if I scribble? Half a chorus and no ending.",
+            "planQuote": "Half a chorus and no ending.",
+            "ask": "Band's running the set at quarter to. If I'm not there, they'll cut my song.",
+            "onTime": { "line": "They ran the set twice. Her song stays in.", "keepsake": "lyrics", "weekNote": "Her song is in." },
+            "late": {
+                "line": "They cut her song from Thursday. She says she'll change their minds.",
+                "weekNote": "Her song was cut.",
+                "carry": "Wednesday Priya rides for a second chance to win her song back."
+            },
+            "notReached": { "line": "The band texted the setlist. Her song wasn't on it.", "weekNote": "Her song was cut.", "carry": "Wednesday Priya rides for a second chance to win her song back." }
+        },
+        {
+            "name": "Wen",
+            "destination": "Riverside",
+            "deadline": "00:15",
+            "platform": "He asked for me today. By name.",
+            "planQuote": "He asked for me today. By name.",
+            "ask": "Good days are rare now. The nurse says come before quarter past, while he's still awake.",
+            "onTime": { "line": "He was awake. He knew her straight away." },
+            "late": {
+                "line": "He'd fallen asleep. She sat with him anyway, until the nurse said go.",
+                "logLine": "He'd fallen asleep. She sat with him anyway.",
+                "aside": "She steps off without looking back. Then, at the gate, she lifts a hand.",
+                "carry": "Wen boards quieter: “He didn't wake. That's all right.” Friday is her big night, and she hasn't forgotten Tuesday."
+            },
+            "notReached": {
+                "line": "She stood at the locked door and phoned the night desk.",
+                "carry": "Wen boards quieter: “He didn't wake. That's all right.” Friday is her big night, and she hasn't forgotten Tuesday."
+            }
         }
-    ]
+    ],
+    "variants": [
+        {
+            "if": { "night": "Night1", "passenger": "Tomás", "status": "missed" },
+            "passenger": "Tomás",
+            "deadline": "00:35",
+            "platform": "Told to come in early tonight. Twenty-five to, or don't bother.",
+            "planQuote": "Twenty-five to, or don't bother."
+        },
+        { "if": { "night": "Night1", "passenger": "Wen", "status": "missed" }, "passenger": "Wen", "platform": "Last night I only got the glass. He asked for me today, by name." },
+        { "if": { "night": "Night1", "passenger": "Priya", "status": "missed" }, "passenger": "Priya", "platform": "Missed rehearsal yesterday. Half a chorus to make up for it, and no ending." }
+    ],
+    "coach": [
+        { "when": "stops", "count": 1, "text": "Tonight is Tomás's final warning. You promised {promised}. Click a glowing station to start." },
+        { "when": "onTime", "count": 3, "text": "Three of four is the most anyone can do tonight, and every way to get three leaves Tomás waiting. Saving him costs someone else." },
+        { "when": "promiseBroken", "text": "You promised {promised}. On this route, they won't make it." },
+        { "when": "onTime", "count": 2, "text": "Two of four. {waiting} would wait. Is it worth it? Only you can say." }
+    ],
+    "secrets": [ { "station": "Old Town", "by": "00:05", "keepsake": "lantern" } ],
+    "logbook": { "tomorrow": "Wednesday is Agnes's big night. Her grandson's ferry leaves at half past." }
 }

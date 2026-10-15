@@ -55,5 +55,40 @@ namespace LastTrainHome.Domain.Tests
             Assert.Throws<ArgumentException>(() => new Campaign(Array.Empty<string>()));
             Assert.Throws<ArgumentException>(() => new Campaign(new[] { "Night1", "Night1" }));
         }
+
+        [Test]
+        public void BigNights_StayUnknownUntilRevealed()
+        {
+            var campaign = new Campaign(new[] { "Night1" });
+
+            Assert.That(campaign.IsBigNightRevealed("Priya"), Is.False);
+            campaign.RevealBigNight("Priya");
+            Assert.That(campaign.IsBigNightRevealed("Priya"), Is.True);
+            Assert.That(campaign.IsBigNightRevealed("Wen"), Is.False);
+        }
+
+        [Test]
+        public void Keepsakes_AreKeptInTheOrderLeft_EachOnce()
+        {
+            var campaign = new Campaign(new[] { "Night1" });
+
+            campaign.AddKeepsake("setlist");
+            campaign.AddKeepsake("loaf");
+            campaign.AddKeepsake("setlist");
+
+            Assert.That(campaign.Keepsakes, Is.EqualTo(new[] { "setlist", "loaf" }));
+        }
+
+        [Test]
+        public void WeekNotes_KeepTheLatestNotePerPassenger()
+        {
+            var campaign = new Campaign(new[] { "Night1" });
+
+            Assert.That(campaign.GetWeekNote("Agnes"), Is.Empty);
+            campaign.SetWeekNote("Agnes", "Scarf: red.");
+            campaign.SetWeekNote("Agnes", "Scarf: grey.");
+
+            Assert.That(campaign.GetWeekNote("Agnes"), Is.EqualTo("Scarf: grey."));
+        }
     }
 }

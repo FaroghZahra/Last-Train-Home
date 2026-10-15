@@ -59,6 +59,11 @@ namespace LastTrainHome.Domain.Routing
                 return AddStopResult.Rejected(AddStopStatus.AlreadyAtStation);
             }
 
+            if (_network.IsClosed(stationId))
+            {
+                return AddStopResult.Rejected(AddStopStatus.StationClosed);
+            }
+
             if (!_network.TryGetTravelMinutes(last.StationId, stationId, out int minutes))
             {
                 return AddStopResult.Rejected(AddStopStatus.NoTrack);

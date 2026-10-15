@@ -17,11 +17,15 @@ namespace LastTrainHome.Domain.Journey
 
         private int _stopIndex;
         private bool _isHolding;
+        private bool _holdReleased;
         private float _phaseElapsed;
         private ClockTime? _shownTime;
         private float _speed = 1f;
 
-        /// <param name="holdSeconds">How long the train waits at each stop, one entry per stop.</param>
+        /// <param name="holdSeconds">
+        /// How long the train waits at each stop, one entry per stop. <see cref="float.PositiveInfinity"/> waits until
+        /// <see cref="ReleaseHold"/> is called.
+        /// </param>
         /// <param name="secondsPerMinute">Real seconds per minute of track time.</param>
         public JourneyTimeline(IReadOnlyList<RouteStop> stops, IReadOnlyList<float> holdSeconds, float secondsPerMinute)
         {
@@ -65,6 +69,9 @@ namespace LastTrainHome.Domain.Journey
 
         public bool IsComplete { get; private set; }
 
+        /// <summary>Whether the train is standing at a stop until <see cref="ReleaseHold"/> is called.</summary>
+        public bool IsWaiting => _isHolding && !_holdReleased && float.IsPositiveInfinity(_holdSeconds[_stopIndex]);
+
         public JourneyLeg CurrentLeg { get; private set; }
 
         /// <summary>Playback rate; 1 is normal speed.</summary>
@@ -87,6 +94,15 @@ namespace LastTrainHome.Domain.Journey
             ArriveAt(0);
         }
 
+        /// <summary>Ends the wait at the current stop; the train leaves on the next <see cref="Advance"/>.</summary>
+        public void ReleaseHold()
+        {
+            if (_isHolding)
+            {
+                _holdReleased = true;
+            }
+        }
+
         /// <summary>Moves the journey forward. Large steps run through as many stops as they cover.</summary>
         public void Advance(float seconds)
         {
@@ -98,7 +114,7 @@ namespace LastTrainHome.Domain.Journey
             float remaining = Math.Max(0f, seconds) * _speed;
             while (!IsComplete)
             {
-                float phaseLength = _isHolding ? _holdSeconds[_stopIndex] : LegSeconds(_stopIndex);
+                float phaseLength = !_isHolding ? LegSeconds(_stopIndex) : _holdReleased ? 0f : _holdSeconds[_stopIndex];
                 float needed = phaseLength - _phaseElapsed;
                 if (remaining < needed)
                 {
@@ -137,6 +153,7 @@ namespace LastTrainHome.Domain.Journey
         {
             _stopIndex = stopIndex;
             _isHolding = true;
+            _holdReleased = false;
             _phaseElapsed = 0f;
             CurrentLeg = JourneyLeg.AtStop(stopIndex);
             ShowTime(_stops[stopIndex].Arrival);

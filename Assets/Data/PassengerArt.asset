@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724c71c5fba90ad4185fa0eaf0ef87ce, type: 3}
+  m_Name: PassengerArt
+  m_EditorClassIdentifier: 
+  _passengers:
+  - Name: Mina
+    Figure: {fileID: 21300000, guid: 7c738605f1b192f4ab9f5cb3221ac922, type: 3}
+    Portrait: {fileID: 21300000, guid: cb0bcac40c99d0543b3674e80c8f76b9, type: 3}
+    Color: {r: 0.27, g: 0.6, b: 0.6, a: 1}
+  - Name: Dev
+    Figure: {fileID: 21300000, guid: e1e5a7be7ed97ad47ba556d8850bfa21, type: 3}
+    Portrait: {fileID: 21300000, guid: b834a7d272f384248b96ff58be221fc5, type: 3}
+    Color: {r: 0.29, g: 0.48, b: 0.72, a: 1}
+  - Name: Agnes
+    Figure: {fileID: 21300000, guid: b25730799cd6ec64c9b5a66589b93191, type: 3}
+    Portrait: {fileID: 21300000, guid: 0e7ca85a9d2a9ff4c9441530bdf0c2e1, type: 3}
+    Color: {r: 0.58, g: 0.33, b: 0.5, a: 1}
+  - Name: "Tom\xE1s"
+    Figure: {fileID: 21300000, guid: f638876ce25facd479f95bc62119f1be, type: 3}
+    Portrait: {fileID: 21300000, guid: 11d45ee6e3ce67d49b1c2e1a7ac4d9b7, type: 3}
+    Color: {r: 0.86, g: 0.62, b: 0.2, a: 1}
+  - Name: Priya
+    Figure: {fileID: 21300000, guid: 4a5b49a08d7f52444be32d2108bbb1cb, type: 3}
+    Portrait: {fileID: 21300000, guid: f6cbef155acc3804692b7e6b62018979, type: 3}
+    Color: {r: 0.9, g: 0.45, b: 0.24, a: 1}
+  - Name: Wen
+    Figure: {fileID: 21300000, guid: b4cb0b8ff57fa5d47804358c331f107a, type: 3}
+    Portrait: {fileID: 21300000, guid: e0e1a9d1963b1b14ca4733d8ae78d2cd, type: 3}
+    Color: {r: 0.4, g: 0.6, b: 0.33, a: 1}
+  _defaultColor: {r: 0.6, g: 0.58, b: 0.55, a: 1}

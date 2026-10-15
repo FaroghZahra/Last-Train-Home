@@ -1,0 +1,126 @@
+{
+    "title": "Thursday",
+    "startStation": "Central",
+    "departure": "00:00",
+    "closing": "01:00",
+    "stations": [
+        { "id": "Old Town", "x": -3.6, "y": 1.6 },
+        { "id": "Central", "x": -0.1, "y": 0.2 },
+        { "id": "Riverside", "label": "right", "x": -1.2, "y": -1.3 },
+        { "id": "Hillside", "label": "below", "x": -1.5, "y": -3.2 },
+        { "id": "Market", "label": "right", "x": 2.6, "y": -2.3 },
+        { "id": "Harbour", "x": 4.6, "y": -0.55 }
+    ],
+    "tracks": [
+        { "from": "Central", "to": "Harbour", "minutes": 10, "closed": true },
+        { "from": "Central", "to": "Old Town", "minutes": 15, "via": [ { "x": -2.58, "y": 1.92 } ] },
+        { "from": "Central", "to": "Riverside", "minutes": 5 },
+        { "from": "Old Town", "to": "Riverside", "minutes": 15 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 20 },
+        { "from": "Riverside", "to": "Hillside", "minutes": 15 },
+        { "from": "Central", "to": "Market", "minutes": 5 },
+        { "from": "Market", "to": "Harbour", "minutes": 5 }
+    ],
+    "rules": { "asks": 1 },
+    "nightCard": {
+        "kicker": "Night {night} of {nights}",
+        "featured": "Priya",
+        "featuredLine": "Tonight is Priya's first real gig.",
+        "lines": [ "The tide's over the Harbour line. Tonight Harbour is only reachable through Market.", "Not everyone will make it home on time." ],
+        "emphasis": "You decide who waits.",
+        "footnote": "The lighthouse keeper waves at any train through Harbour by ten past."
+    },
+    "platform": { "kicker": "{day} · Night {night} of {nights} · Central, 23:58", "headline": "She's on at quarter past.", "coach": "One question tonight. Then promise one of them." },
+    "passengers": [
+        {
+            "name": "Priya",
+            "destination": "Old Town",
+            "deadline": "00:15",
+            "platform": "On at quarter past. I've been sick twice and there's a plectrum in every pocket.",
+            "planQuote": "On at quarter past.",
+            "ask": "My mum's coming. She's only ever heard me play through a bedroom door.",
+            "onTime": { "line": "She walked on at quarter past exactly. The first chord was too loud, and perfect.", "logLine": "The first chord was too loud, and perfect.", "keepsake": "ticket" },
+            "late": { "line": "They'd moved her to last. She played to the bar staff and her mum.", "carry": "Priya will still play the platform for the last train on Friday." },
+            "notReached": { "line": "Her mum filmed the empty stage. Priya watched it on the train, twice.", "carry": "Priya will still play the platform for the last train on Friday." }
+        },
+        {
+            "name": "Agnes",
+            "destination": "Harbour",
+            "deadline": "00:45",
+            "platform": "He sent a photo of the scarf already. Look. He's wearing it indoors.",
+            "planQuote": "He's wearing it indoors.",
+            "ask": "I've nobody to knit for now. I might start on the driver.",
+            "onTime": { "line": "She went home and cast on something in your colours." },
+            "late": { "line": "She dozed off on the train. Nobody minded." },
+            "notReached": { "line": "She got a taxi and told the driver all about the ferry." }
+        },
+        {
+            "name": "Wen",
+            "destination": "Riverside",
+            "deadline": "00:25",
+            "platform": "The nurse says he's tired. Tired days are long days.",
+            "planQuote": "Tired days are long days.",
+            "ask": "Tomorrow he's eighty. I've ordered the cake. I'm just praying he's awake for it.",
+            "onTime": { "line": "He was awake, just. She told him about Friday and he smiled at the right part." },
+            "late": { "line": "He'd gone to sleep with the light on. She switched it off." },
+            "notReached": { "line": "She phoned the night desk. They said he'd asked for her once." }
+        },
+        {
+            "name": "Tomás",
+            "destination": "Hillside",
+            "deadline": "00:55",
+            "says": "00:45",
+            "platform": "Hillside. Big order tomorrow for the closing party.",
+            "planQuote": "Big order tomorrow.",
+            "ask": "The big order's not till one, as it happens. Five to is fine. Eleven years of loaves, and tomorrow it's the party ones.",
+            "onTime": { "line": "In early. He shaped the party loaves like little trains." },
+            "late": { "line": "Late again. The manager sighed and handed him an apron." },
+            "notReached": { "line": "He called in. Second time ever." }
+        }
+    ],
+    "variants": [
+        {
+            "if": { "night": "Night3", "passenger": "Agnes", "status": "missed" },
+            "passenger": "Agnes",
+            "deadline": "00:25",
+            "platform": "The post boat takes parcels until twenty-five past. The scarf's going by post.",
+            "planQuote": "The post boat goes at twenty-five past.",
+            "onTime": { "line": "The parcel went over the water, addressed in her best hand." },
+            "late": { "line": "The post boat's lights were already small. Monday, then." },
+            "notReached": { "line": "She carried the parcel home again, under her arm." }
+        },
+        {
+            "if": { "night": "Night2", "passenger": "Tomás", "status": "onTime" },
+            "passenger": "Tomás",
+            "platform": "Brought you a loaf. Rye. Don't tell the manager.",
+            "planQuote": "Don't tell the manager."
+        },
+        {
+            "if": { "night": "Night2", "passenger": "Tomás", "status": "missed" },
+            "passenger": "Tomás",
+            "platform": "Last loaves of my last week. Might as well make them good ones.",
+            "planQuote": "Last loaves of my last week."
+        },
+        {
+            "if": { "night": "Night3", "passenger": "Agnes", "status": "missed", "promised": true },
+            "passenger": "Agnes",
+            "platform": "You promised, love. Never mind. The post boat takes parcels until twenty-five past.",
+            "planQuote": "The post boat goes at twenty-five past."
+        },
+        {
+            "if": { "night": "Night3", "passenger": "Wen", "status": "missed" },
+            "passenger": "Wen",
+            "deadline": "00:20",
+            "platform": "The nurse says come earlier now. He's slipping in the evenings.",
+            "planQuote": "Come earlier now."
+        }
+    ],
+    "coach": [
+        { "when": "stops", "count": 1, "text": "Tonight is Priya's first real gig. You promised {promised}. Click a glowing station to start." },
+        { "when": "onTime", "count": 3, "text": "Three of four is the most anyone can do tonight, and every way to get three leaves Priya waiting. Saving her costs someone else." },
+        { "when": "promiseBroken", "text": "You promised {promised}. On this route, they won't make it." },
+        { "when": "onTime", "count": 2, "text": "Two of four. {waiting} would wait. Is it worth it? Only you can say." }
+    ],
+    "secrets": [ { "station": "Harbour", "by": "00:10", "keepsake": "lighthouse" } ],
+    "logbook": { "tomorrow": "Friday is the last train, and Wen's dad turns eighty." }
+}

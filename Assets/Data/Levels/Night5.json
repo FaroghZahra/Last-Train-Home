@@ -1,0 +1,135 @@
+{
+    "title": "Friday",
+    "startStation": "Central",
+    "departure": "00:00",
+    "closing": "01:00",
+    "stations": [
+        { "id": "Old Town", "x": -3.6, "y": 1.6 },
+        { "id": "Central", "x": -0.1, "y": 0.2 },
+        { "id": "Riverside", "label": "right", "x": -1.2, "y": -1.3 },
+        { "id": "Hillside", "label": "below", "x": -1.5, "y": -3.2 },
+        { "id": "Market", "label": "right", "x": 2.6, "y": -2.3 },
+        { "id": "Harbour", "x": 4.6, "y": -0.55 }
+    ],
+    "tracks": [
+        { "from": "Central", "to": "Harbour", "minutes": 10 },
+        { "from": "Central", "to": "Old Town", "minutes": 10, "via": [ { "x": -2.58, "y": 1.92 } ] },
+        { "from": "Central", "to": "Riverside", "minutes": 10 },
+        { "from": "Old Town", "to": "Riverside", "minutes": 15 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 10 },
+        { "from": "Riverside", "to": "Hillside", "minutes": 15 },
+        { "from": "Central", "to": "Market", "minutes": 5 },
+        { "from": "Market", "to": "Harbour", "minutes": 5 },
+        { "from": "Market", "to": "Hillside", "minutes": 15, "via": [ { "x": 0.64, "y": -3.19 } ] }
+    ],
+    "rules": { "asks": 1 },
+    "nightCard": {
+        "kicker": "Night {night} of {nights} · the last train",
+        "featured": "Wen",
+        "featuredLine": "Tonight her dad turns eighty.",
+        "lines": [ "Market is fully open for the last night: quick lines to Harbour and Hillside.", "Mina is waiting at Market for a lift to Old Town.", "Not everyone will make it home on time." ],
+        "emphasis": "You decide who waits.",
+        "footnote": "The care home at Riverside is giving away its old railway photos, until ten past."
+    },
+    "platform": { "kicker": "{day} · Night {night} of {nights} · Central, 23:58", "headline": "The last train on the Northline.", "coach": "One question tonight. Then one last promise." },
+    "passengers": [
+        {
+            "name": "Wen",
+            "destination": "Riverside",
+            "deadline": "00:20",
+            "platform": "Eighty tonight. The nurse is keeping him up for the cake until twenty past.",
+            "planQuote": "Cake at twenty past.",
+            "ask": "He won't know it's his birthday. But I will. That's the deal we made years ago.",
+            "onTime": { "line": "He blew out one candle. Then he said her name, clear as anything.", "logLine": "He blew out one candle, and said her name.", "keepsake": "candle" },
+            "late": { "line": "The cake was in the fridge. She sang to him anyway, quietly, while he slept." },
+            "notReached": { "line": "She called. The nurse held the phone to his ear for the whole song." }
+        },
+        {
+            "name": "Agnes",
+            "destination": "Harbour",
+            "deadline": "00:40",
+            "says": "00:30",
+            "platform": "Riding once more to say goodbye. The harbour lights a bonfire for the old line at half past.",
+            "planQuote": "The bonfire's at half past.",
+            "ask": "Fifty years on this line. I met my husband on the 23:40. Oh, they've moved the bonfire to twenty to, for the tide.",
+            "onTime": { "line": "She stood by the bonfire and threw in her old season ticket." },
+            "late": { "line": "The bonfire had burned down to embers. She warmed her hands on it anyway." },
+            "notReached": { "line": "She watched the harbour glow from the train window, from far off." }
+        },
+        {
+            "name": "Priya",
+            "destination": "Old Town",
+            "deadline": "00:25",
+            "platform": "Last ride home. I'm busking the Old Town platform for the last train through.",
+            "planQuote": "Busking the last train through.",
+            "ask": "The song I wrote on your train. It's called Northline. Obviously.",
+            "onTime": { "line": "She played Northline as you pulled out. You heard it through the window." },
+            "late": { "line": "She played to an empty platform. Then the station lights went off, one by one." },
+            "notReached": { "line": "She played Northline on your train instead, for whoever was still aboard." }
+        },
+        {
+            "name": "Tomás",
+            "destination": "Hillside",
+            "deadline": "00:25",
+            "platform": "Party loaves are in the oven. I'm on at twenty-five past.",
+            "planQuote": "I'm on at twenty-five past.",
+            "ask": "A new bakery's asked me to start Monday. Days. I'll see the sun.",
+            "onTime": { "line": "He took the party loaves out at the stroke of one. The manager shook his hand." },
+            "late": { "line": "They'd iced the party loaves without him. He did the last tray anyway." },
+            "notReached": { "line": "He missed the party bake. He laughed about it, eventually." }
+        },
+        {
+            "name": "Mina",
+            "boards": "Market",
+            "destination": "Old Town",
+            "deadline": "00:40",
+            "platform": "Can you pick me up at Market? Covering a shift at the Old Town clinic. Twenty to.",
+            "planQuote": "Clinic shift at twenty to.",
+            "ask": "I did a year at the Riverside home. Wen's dad called me “the tall one”. I'm not tall.",
+            "onTime": { "line": "She was in her scrubs before handover finished. “Quiet night,” they said. It never is." },
+            "late": { "line": "The day nurse stayed on for her and said nothing. That was worse." },
+            "notReached": { "line": "A taxi on her own money. Beans until payday." }
+        }
+    ],
+    "variants": [
+        {
+            "if": { "night": "Night2", "passenger": "Tomás", "status": "missed" },
+            "passenger": "Tomás",
+            "platform": "Last shift. Twenty-five past, then that's me done.",
+            "planQuote": "Last shift. Twenty-five past.",
+            "onTime": { "line": "He did his last shift right. The manager shook his hand anyway." }
+        },
+        {
+            "if": { "night": "Night3", "passenger": "Agnes", "status": "onTime" },
+            "passenger": "Agnes",
+            "platform": "He rang from the other side. He's wearing the scarf. Now, the bonfire's at half past."
+        },
+        {
+            "if": { "night": "Night4", "passenger": "Wen", "status": "missed" },
+            "passenger": "Wen",
+            "deadline": "00:15",
+            "platform": "He was asleep by twenty past last night. Quarter past, the nurse says. Please.",
+            "planQuote": "Quarter past, the nurse says."
+        },
+        {
+            "if": { "night": "Night4", "passenger": "Priya", "status": "missed" },
+            "passenger": "Priya",
+            "destination": "Hillside",
+            "deadline": "00:20",
+            "platform": "Not busking tonight. Mum's waiting up for me in Hillside, till twenty past. Don't ask about Thursday.",
+            "planQuote": "Mum's waiting up till twenty past.",
+            "ask": "I'll write another song. Not tonight. Tonight I want my mum's sofa.",
+            "onTime": { "line": "Her mum had the kettle on. Neither of them mentioned the gig, and that was the kindest thing." },
+            "late": { "line": "Her mum had gone to bed, but left the hall light on." },
+            "notReached": { "line": "She walked up the hill in the dark with the guitar on her back." }
+        }
+    ],
+    "coach": [
+        { "when": "stops", "count": 1, "text": "Tonight is Wen's dad's eightieth. You promised {promised}. Click a glowing station to start." },
+        { "when": "onTime", "count": 3, "text": "Three is the most anyone can do tonight, and every way to get three leaves Wen waiting. Saving her costs someone else." },
+        { "when": "promiseBroken", "text": "You promised {promised}. On this route, they won't make it." },
+        { "when": "onTime", "count": 2, "text": "Two home. {waiting} would wait. Is it worth it? Only you can say." }
+    ],
+    "secrets": [ { "station": "Riverside", "by": "00:10", "keepsake": "photo" } ],
+    "logbook": { "tomorrow": "The Northline is closed. The station lights go off, one by one." }
+}

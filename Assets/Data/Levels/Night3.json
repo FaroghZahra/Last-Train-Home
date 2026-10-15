@@ -1,62 +1,137 @@
 {
-    "title": "Night 3",
+    "title": "Wednesday",
     "startStation": "Central",
     "departure": "00:00",
     "closing": "01:00",
     "stations": [
-        { "id": "Hillside", "label": "left", "x": -0.8, "y": -0.8 },
-        { "id": "Old Town", "x": 2.0, "y": 2.2 },
-        { "id": "Riverside", "label": "below", "x": 2.0, "y": -0.8 },
-        { "id": "Market", "label": "below", "x": 1.2, "y": -2.9 },
-        { "id": "Central", "label": "right", "x": 5.5, "y": 0.0 },
-        { "id": "Harbour", "x": 5.5, "y": 3.0 }
+        { "id": "Old Town", "x": -3.6, "y": 1.6 },
+        { "id": "Central", "x": -0.1, "y": 0.2 },
+        { "id": "Riverside", "label": "right", "x": -1.2, "y": -1.3 },
+        { "id": "Hillside", "label": "below", "x": -1.5, "y": -3.2 },
+        { "id": "Market", "label": "right", "x": 2.6, "y": -2.3 },
+        { "id": "Harbour", "x": 4.6, "y": -0.55 }
     ],
     "tracks": [
-        { "from": "Central", "to": "Harbour", "minutes": 10 },
-        { "from": "Central", "to": "Old Town", "minutes": 10 },
-        { "from": "Central", "to": "Riverside", "minutes": 10 },
-        { "from": "Central", "to": "Market", "minutes": 15 },
-        { "from": "Old Town", "to": "Riverside", "minutes": 10 },
-        { "from": "Old Town", "to": "Hillside", "minutes": 10 },
+        { "from": "Central", "to": "Harbour", "minutes": 15 },
+        { "from": "Central", "to": "Old Town", "minutes": 10, "via": [ { "x": -2.58, "y": 1.92 } ] },
+        { "from": "Central", "to": "Riverside", "minutes": 5 },
+        { "from": "Old Town", "to": "Riverside", "minutes": 15 },
         { "from": "Riverside", "to": "Hillside", "minutes": 10 },
-        { "from": "Market", "to": "Hillside", "minutes": 10 }
+        { "from": "Old Town", "to": "Hillside", "minutes": 10, "closed": true },
+        { "from": "Central", "to": "Market", "minutes": 15 },
+        { "from": "Market", "to": "Hillside", "minutes": 20, "via": [ { "x": 0.64, "y": -3.19 } ] }
     ],
+    "rules": { "asks": 1 },
+    "nightCard": {
+        "kicker": "Night {night} of {nights}",
+        "featured": "Agnes",
+        "featuredLine": "Tonight her grandson's ferry leaves at half past.",
+        "lines": [
+            "Market reopens tonight, with a line on to Hillside. The tree is still down between Old Town and Hillside.",
+            "A pickup tonight: Dev is waiting at Old Town. The train has to collect him before it can drop him off.",
+            "Not everyone will make it home on time."
+        ],
+        "emphasis": "You decide who waits.",
+        "footnote": "Market reopens at quarter past, with a ribbon to cut."
+    },
+    "platform": {
+        "kicker": "{day} · Night {night} of {nights} · Central, 23:58",
+        "headline": "The ferry leaves at half past.",
+        "coach": "One question tonight. Then promise one of them. Dev boards at Old Town, so pass Old Town before Market."
+    },
     "passengers": [
         {
             "name": "Agnes",
             "destination": "Harbour",
-            "deadline": "00:25",
-            "motivation": "The night post boat takes parcels until half past.",
-            "onTime": "The parcel went over the water, addressed in her best hand.",
-            "late": "The post boat's lights were already small. Monday, then.",
-            "notReached": "She carried the parcel home again, under her arm."
-        },
-        {
-            "name": "Tomás",
-            "destination": "Hillside",
-            "deadline": "00:45",
-            "motivation": "Back on nights. They're watching the clock now.",
-            "onTime": "He clocked in early and nobody said a word. Good.",
-            "late": "His name went in the book. Pencil, for now.",
-            "notReached": "He ran the last stretch and still didn't make it."
+            "deadline": "00:30",
+            "platform": "The ferry's at half past. He's eight. He won't remember me waving, but I will.",
+            "planQuote": "The ferry's at half past.",
+            "ask": "His mum's taking him over the water for good. The scarf's so he has something of mine.",
+            "onTime": { "line": "She found him at the rail. She wound the scarf round him twice, and the boat pulled out.", "logLine": "She wound the scarf round him twice.", "keepsake": "ferry" },
+            "late": { "line": "The ferry was lights on the water. She held the scarf up anyway.", "carry": "Thursday Agnes posts the scarf instead. The post boat takes parcels until twenty-five past." },
+            "notReached": { "line": "She heard the horn from the platform at Central.", "carry": "Thursday Agnes posts the scarf instead. The post boat takes parcels until twenty-five past." }
         },
         {
             "name": "Priya",
             "destination": "Old Town",
             "deadline": "00:40",
-            "motivation": "Second gig, smaller bar. Doors at twenty to.",
-            "onTime": "Twelve people came. Two of them knew the words.",
-            "late": "They played two songs before the bar closed. Both were good.",
-            "notReached": "The band played without her. They kept her mic on the stand."
+            "platform": "Flyers for Thursday. Every lamppost in Old Town before the glue freezes.",
+            "planQuote": "Every lamppost in Old Town.",
+            "ask": "If nobody comes on Thursday, at least I'll know it wasn't the flyers.",
+            "onTime": { "line": "Forty flyers, forty lampposts. She saved one for your cab.", "keepsake": "flyer", "weekNote": "Old Town knows about it." },
+            "late": { "line": "Half the lampposts. She did the rest by torchlight." },
+            "notReached": { "line": "She taped the flyers up at Central instead. Nobody from Old Town will see them." }
         },
         {
             "name": "Wen",
             "destination": "Riverside",
-            "deadline": "00:30",
-            "motivation": "Dad's care home locks the doors at half past.",
-            "onTime": "He was still awake. They did the crossword together.",
-            "late": "The night nurse let her wave through the glass.",
-            "notReached": "She phoned instead. He thought she was her mother."
+            "deadline": "00:10",
+            "says": "00:25",
+            "platform": "Brought the crossword. He does the across, I do the down.",
+            "planQuote": "He does the across, I do the down.",
+            "ask": "The nurse rang. He's flagging, so ten past or he'll be asleep. Friday he'll have a cake if he's up to it.",
+            "onTime": { "line": "They did eleven across together. He got it first." },
+            "late": { "line": "He'd gone to sleep. She filled in the across for him, in his handwriting." },
+            "notReached": { "line": "She did the crossword alone on the train. She left the across blank." }
+        },
+        {
+            "name": "Tomás",
+            "destination": "Hillside",
+            "deadline": "00:45",
+            "platform": "Kept on. They want me in by quarter to now, every night.",
+            "planQuote": "In by quarter to, every night.",
+            "ask": "Friday the bakery does the big order for the line's closing party. I've the recipe in my head.",
+            "onTime": { "line": "In with time to spare. He's teaching the new lad the rye." },
+            "late": { "line": "Ten minutes. The manager just wrote it down." },
+            "notReached": { "line": "He didn't make it. He phoned, and they said fine, in that voice." }
+        },
+        {
+            "name": "Dev",
+            "boards": "Old Town",
+            "destination": "Market",
+            "deadline": "00:50",
+            "platform": "Rang ahead: I'll be on the library steps at Old Town. Market by ten to, night shift.",
+            "planQuote": "Market by ten to. Night shift.",
+            "ask": "First in my family at uni. Mum thinks I'm asleep. I stack shelves till six so she doesn't have to.",
+            "onTime": { "line": "He clocked on with a minute spare. The supervisor didn't look up, which is the best kind of night." },
+            "late": { "line": "Docked half an hour. He revised his notes on the back of the docking slip." },
+            "notReached": { "line": "He walked from the last stop with his headphones in. The album lasted the whole way." }
         }
-    ]
+    ],
+    "variants": [
+        { "if": { "night": "Night2", "passenger": "Agnes", "status": "missed" }, "passenger": "Agnes", "platform": "Grey, in the end. He'll have to like grey. The ferry's at half past." },
+        {
+            "if": { "night": "Night2", "passenger": "Priya", "status": "missed" },
+            "passenger": "Priya",
+            "deadline": "00:45",
+            "platform": "Band's letting me play the song for them tonight. If they like it, it's back in.",
+            "planQuote": "One chance to win the song back.",
+            "onTime": { "line": "She played it once through. The drummer just nodded. It's back in.", "keepsake": "flyer", "weekNote": "Her song is back in." },
+            "late": { "line": "They'd packed up. She played it to the empty room anyway.", "weekNote": "Her song is still out." },
+            "notReached": { "line": "She sang it into a voice memo and sent it. No reply yet.", "weekNote": "Her song is still out." }
+        },
+        { "if": { "night": "Night2", "passenger": "Wen", "status": "missed" }, "passenger": "Wen", "platform": "He didn't wake. That's all right.", "planQuote": "He didn't wake. That's all right." },
+        {
+            "if": { "night": "Night2", "passenger": "Tomás", "status": "missed" },
+            "passenger": "Tomás",
+            "deadline": "00:45",
+            "platform": "Friday's my last shift. Still want to do them right.",
+            "planQuote": "Friday's my last shift.",
+            "onTime": { "line": "He did the shift right. Nobody thanked him, but he knew." }
+        },
+        {
+            "if": { "night": "Night2", "passenger": "Tomás", "status": "missed", "promised": true },
+            "passenger": "Tomás",
+            "platform": "You said you'd get me there. I know it wasn't the train's fault. Still.",
+            "planQuote": "You said you'd get me there."
+        }
+    ],
+    "coach": [
+        { "when": "stops", "count": 1, "text": "Tonight is Agnes's grandson's ferry. You promised {promised}. Click a glowing station to start." },
+        { "when": "onTime", "count": 3, "text": "Three is the most anyone can do tonight, and every way to get three leaves Agnes waiting. Saving her costs someone else." },
+        { "when": "promiseBroken", "text": "You promised {promised}. On this route, they won't make it." },
+        { "when": "onTime", "count": 2, "text": "Two home. {waiting} would wait. Is it worth it? Only you can say." }
+    ],
+    "secrets": [ { "station": "Market", "by": "00:15", "keepsake": "ribbon" } ],
+    "logbook": { "tomorrow": "Thursday is Priya's first real gig. She's on at quarter past." }
 }

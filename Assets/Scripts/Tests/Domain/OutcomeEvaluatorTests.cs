@@ -83,5 +83,42 @@ namespace LastTrainHome.Domain.Tests
             Assert.That(outcomes[1].Status, Is.EqualTo(ArrivalStatus.OnTime)); // Tomás 00:30
             Assert.That(outcomes[2].Status, Is.EqualTo(ArrivalStatus.OnTime)); // Priya 00:10
         }
+
+        [Test]
+        public void Pickup_OnlyGetsOffAfterBoarding()
+        {
+            // Boards at Market; the first pass through Old Town comes before the train has collected them.
+            var passenger = new Passenger("Dev", TestMaps.OldTown, new ClockTime(60), originStationId: TestMaps.Market);
+            Route route = RouteThrough(TestMaps.OldTown, TestMaps.Central, TestMaps.Market, TestMaps.Central, TestMaps.OldTown);
+
+            PassengerOutcome outcome = OutcomeEvaluator.Evaluate(passenger, route.Stops);
+
+            Assert.That(outcome.BoardStopIndex, Is.EqualTo(3));
+            Assert.That(outcome.StopIndex, Is.EqualTo(5));
+            Assert.That(outcome.Arrival, Is.EqualTo(new ClockTime(50)));
+        }
+
+        [Test]
+        public void Pickup_NeverCollected_IsNotReachedAndNeverAboard()
+        {
+            var passenger = new Passenger("Dev", TestMaps.OldTown, new ClockTime(60), originStationId: TestMaps.Hillside);
+            Route route = RouteThrough(TestMaps.OldTown);
+
+            PassengerOutcome outcome = OutcomeEvaluator.Evaluate(passenger, route.Stops);
+
+            Assert.That(outcome.Status, Is.EqualTo(ArrivalStatus.NotReached));
+            Assert.That(outcome.IsAboard, Is.False);
+        }
+
+        [Test]
+        public void StartBoarder_IsAboardFromTheFirstStop()
+        {
+            var passenger = new Passenger("Agnes", TestMaps.Harbour, new ClockTime(60));
+
+            PassengerOutcome outcome = OutcomeEvaluator.Evaluate(passenger, RouteThrough(TestMaps.OldTown).Stops);
+
+            Assert.That(outcome.BoardStopIndex, Is.Zero);
+            Assert.That(outcome.Status, Is.EqualTo(ArrivalStatus.NotReached));
+        }
     }
 }
