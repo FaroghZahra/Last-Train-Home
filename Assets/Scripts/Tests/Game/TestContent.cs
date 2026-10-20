@@ -18,7 +18,7 @@ namespace LastTrainHome.Game.Tests
             ""tracks"": [ { ""from"": ""Central"", ""to"": ""Harbour"", ""minutes"": 10 }, { ""from"": ""Central"", ""to"": ""Market"", ""minutes"": 10 },
                           { ""from"": ""Market"", ""to"": ""Depot"", ""minutes"": 15, ""closed"": true } ],
             ""rules"": { ""asks"": 1 },
-            ""nightCard"": { ""kicker"": ""Night {night} of {nights}"", ""featured"": ""Agnes"", ""featuredLine"": ""Her night."", ""lines"": [ ""Someone waits."" ] },
+            ""nightCard"": { ""kicker"": ""Night {night} of {nights}"", ""featured"": [ ""Agnes"" ], ""featuredLine"": ""Her night."", ""lines"": [ ""Someone waits."" ] },
             ""platform"": { ""kicker"": ""{day}"", ""headline"": ""Meet them."", ""coach"": ""Ask one."" },
             ""passengers"": [
                 { ""name"": ""Agnes"", ""destination"": ""Harbour"", ""deadline"": ""00:10"", ""platform"": ""The ferry."", ""ask"": ""My grandson."",

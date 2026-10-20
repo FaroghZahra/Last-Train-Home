@@ -11,7 +11,8 @@ namespace LastTrainHome.Game.Tests
     /// <summary>
     /// Guards the design of the shipped week: Monday can be solved, and on every later night nobody can save everyone.
     /// On a passenger's big night saving them is never free: every best route leaves them waiting, and saving them
-    /// costs someone else, whom the player chooses. Explores every legal route through <see cref="NightSession"/>;
+    /// costs someone else, whom the player chooses. On a night two passengers share, the cost is each other: either
+    /// can be saved, never both, and saving either gets as many home, so the choice is only about whose night it is. Explores every legal route through <see cref="NightSession"/>;
     /// Design/level_solver.py prints the same routes, and with --variants checks every carry-over combination.
     /// </summary>
     public sealed class LevelBalanceTests
@@ -76,7 +77,11 @@ namespace LastTrainHome.Game.Tests
             return (most, alongside);
         }
 
-        private static string Star(string nightId) => TestContent.Game().Week.BigNightOf(NightIndex(nightId))?.Name;
+        private static string[] Stars(string nightId) =>
+            TestContent.Game().Week.BigNightsOn(NightIndex(nightId)).Select(member => member.Name).ToArray();
+
+        private static bool BothOnTime(NightDefinition night, ArrivalStatus[] statuses, string[] stars) =>
+            stars.All(star => statuses[night.Passengers.ToList().FindIndex(passenger => passenger.Name == star)] == ArrivalStatus.OnTime);
 
         [Test]
         public void Catalog_LoadsTheWeekInOrder()
@@ -108,12 +113,10 @@ namespace LastTrainHome.Game.Tests
 
         [TestCase("Night2")]
         [TestCase("Night3")]
-        [TestCase("Night4")]
-        [TestCase("Night5")]
         public void BigNight_SavingThemCostsSomeoneElse_AndThePlayerChoosesWho(string nightId)
         {
             NightDefinition night = Load(nightId).Night;
-            string star = Star(nightId);
+            string star = Stars(nightId).Single();
             List<ArrivalStatus[]> outcomes = ReachableOutcomes(night);
 
             (int most, string[] alongside) = SavingThem(night, outcomes, star);
@@ -124,13 +127,33 @@ namespace LastTrainHome.Game.Tests
         }
 
         [Test]
+        public void Thursday_PriyaAndWenShareABigNight_AndOnlyOneCanBeKept()
+        {
+            NightDefinition night = Load("Night4").Night;
+            string[] stars = Stars("Night4");
+            List<ArrivalStatus[]> outcomes = ReachableOutcomes(night);
+
+            Assert.That(stars, Is.EquivalentTo(new[] { "Priya", "Wen" }));
+            Assert.That(outcomes.Any(statuses => BothOnTime(night, statuses, stars)), Is.False, "Some route keeps both.");
+            int[] most = stars.Select(star => SavingThem(night, outcomes, star).Most).ToArray();
+            Assert.That(most, Has.All.GreaterThan(0), "One of them can't be saved at all.");
+            Assert.That(most.Distinct().Count(), Is.EqualTo(1), "Saving one of them gets more home than saving the other.");
+        }
+
+        [Test]
+        public void Friday_TheLastTrain_IsNobodysBigNight()
+        {
+            Assert.That(Stars("Night5"), Is.Empty);
+        }
+
+        [Test]
         public void EveryCarryOverCombination_KeepsTheBigNightExpensive()
         {
             GameContent content = TestContent.Game();
             for (int index = 1; index < content.Levels.Count; index++)
             {
                 Level level = content.Levels[index];
-                string star = content.Week.BigNightOf(index)?.Name;
+                string[] stars = content.Week.BigNightsOn(index).Select(member => member.Name).ToArray();
                 var conditions = level.Variants.Select(variant => (variant.IfNightId, variant.IfPassenger, variant.IfStatus)).ToArray();
                 for (int mask = 0; mask < 1 << conditions.Length; mask++)
                 {
@@ -157,10 +180,19 @@ namespace LastTrainHome.Game.Tests
                     List<ArrivalStatus[]> outcomes = ReachableOutcomes(played.Night);
                     string where = $"{level.Night.Id}, variants {mask}";
                     Assert.That(Best(outcomes), Is.LessThan(played.Night.Passengers.Count), $"{where}: someone must wait.");
-                    if (star != null && played.Night.Passengers.Any(passenger => passenger.Name == star))
+                    if (stars.Length == 1 && played.Night.Passengers.Any(passenger => passenger.Name == stars[0]))
                     {
-                        (int most, _) = SavingThem(played.Night, outcomes, star);
-                        Assert.That(most, Is.InRange(1, Best(outcomes) - 1), $"{where}: saving {star} must be possible, and cost someone.");
+                        (int most, _) = SavingThem(played.Night, outcomes, stars[0]);
+                        Assert.That(most, Is.InRange(1, Best(outcomes) - 1), $"{where}: saving {stars[0]} must be possible, and cost someone.");
+                    }
+                    else if (stars.Length > 1)
+                    {
+                        Assert.That(outcomes.Any(statuses => BothOnTime(played.Night, statuses, stars)), Is.False,
+                            $"{where}: some route keeps every big night at once.");
+                        foreach (string star in stars)
+                        {
+                            Assert.That(SavingThem(played.Night, outcomes, star).Most, Is.GreaterThan(0), $"{where}: {star} can't be saved.");
+                        }
                     }
                 }
             }

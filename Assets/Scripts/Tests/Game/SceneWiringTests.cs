@@ -16,7 +16,7 @@ namespace LastTrainHome.Game.Tests
     /// </summary>
     public sealed class SceneWiringTests
     {
-        private const string ScenePath = "Assets/Scenes/Prototype.unity";
+        private const string ScenePath = "Assets/Scenes/Main.unity";
 
         private Scene _scene;
         private bool _openedByTest;

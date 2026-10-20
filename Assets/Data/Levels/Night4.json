@@ -16,7 +16,7 @@
         { "from": "Central", "to": "Old Town", "minutes": 15, "via": [ { "x": -2.58, "y": 1.92 } ] },
         { "from": "Central", "to": "Riverside", "minutes": 5 },
         { "from": "Old Town", "to": "Riverside", "minutes": 15 },
-        { "from": "Old Town", "to": "Hillside", "minutes": 20 },
+        { "from": "Old Town", "to": "Hillside", "minutes": 10 },
         { "from": "Riverside", "to": "Hillside", "minutes": 15 },
         { "from": "Central", "to": "Market", "minutes": 5 },
         { "from": "Market", "to": "Harbour", "minutes": 5 }
@@ -24,13 +24,13 @@
     "rules": { "asks": 1 },
     "nightCard": {
         "kicker": "Night {night} of {nights}",
-        "featured": "Priya",
-        "featuredLine": "Tonight is Priya's first real gig.",
-        "lines": [ "The tide's over the Harbour line. Tonight Harbour is only reachable through Market.", "Not everyone will make it home on time." ],
-        "emphasis": "You decide who waits.",
+        "featured": [ "Priya", "Wen" ],
+        "featuredLine": "Priya's first gig. Wen's dad turns eighty.",
+        "lines": [ "The tide's over the Harbour line. Tonight Harbour is only reachable through Market.", "Priya is on stage in Old Town at quarter past. The cake is cut in Riverside at twenty-five past." ],
+        "emphasis": "Tonight you can only keep one of them.",
         "footnote": "The lighthouse keeper waves at any train through Harbour by ten past."
     },
-    "platform": { "kicker": "{day} · Night {night} of {nights} · Central, 23:58", "headline": "She's on at quarter past.", "coach": "One question tonight. Then promise one of them." },
+    "platform": { "kicker": "{day} · Night {night} of {nights} · Central, 23:58", "headline": "Two big nights, one train.", "coach": "One question tonight. Then promise one of them." },
     "passengers": [
         {
             "name": "Priya",
@@ -46,7 +46,7 @@
         {
             "name": "Agnes",
             "destination": "Harbour",
-            "deadline": "00:45",
+            "deadline": "00:55",
             "platform": "He sent a photo of the scarf already. Look. He's wearing it indoors.",
             "planQuote": "He's wearing it indoors.",
             "ask": "I've nobody to knit for now. I might start on the driver.",
@@ -58,12 +58,12 @@
             "name": "Wen",
             "destination": "Riverside",
             "deadline": "00:25",
-            "platform": "The nurse says he's tired. Tired days are long days.",
-            "planQuote": "Tired days are long days.",
-            "ask": "Tomorrow he's eighty. I've ordered the cake. I'm just praying he's awake for it.",
-            "onTime": { "line": "He was awake, just. She told him about Friday and he smiled at the right part." },
-            "late": { "line": "He'd gone to sleep with the light on. She switched it off." },
-            "notReached": { "line": "She phoned the night desk. They said he'd asked for her once." }
+            "platform": "Eighty tonight. The nurse is keeping him up for the cake until twenty-five past.",
+            "planQuote": "Cake at twenty-five past.",
+            "ask": "He won't know it's his birthday. But I will. That's the deal we made years ago.",
+            "onTime": { "line": "He blew out one candle. Then he said her name, clear as anything.", "logLine": "He blew out one candle, and said her name.", "keepsake": "candle" },
+            "late": { "line": "The cake was in the fridge. She sang to him anyway, quietly, while he slept.", "carry": "Wen will ride the last train on Friday. The nurse is saving him a slice." },
+            "notReached": { "line": "She called. The nurse held the phone to his ear for the whole song.", "carry": "Wen will ride the last train on Friday. The nurse is saving him a slice." }
         },
         {
             "name": "Tomás",
@@ -111,16 +111,16 @@
             "if": { "night": "Night3", "passenger": "Wen", "status": "missed" },
             "passenger": "Wen",
             "deadline": "00:20",
-            "platform": "The nurse says come earlier now. He's slipping in the evenings.",
-            "planQuote": "Come earlier now."
+            "platform": "The nurse says twenty past, cake or no cake. He's slipping in the evenings.",
+            "planQuote": "Twenty past, cake or no cake."
         }
     ],
     "coach": [
-        { "when": "stops", "count": 1, "text": "Tonight is Priya's first real gig. You promised {promised}. Click a glowing station to start." },
-        { "when": "onTime", "count": 3, "text": "Three of four is the most anyone can do tonight, and every way to get three leaves Priya waiting. Saving her costs someone else." },
+        { "when": "stops", "count": 1, "text": "Tonight is Priya's first real gig, and Wen's dad turns eighty. You promised {promised}. Click a glowing station to start." },
+        { "when": "onTime", "count": 3, "text": "Three of four is the most anyone can do tonight, and no route gets both Priya and Wen there on time. You can keep one of their nights." },
         { "when": "promiseBroken", "text": "You promised {promised}. On this route, they won't make it." },
         { "when": "onTime", "count": 2, "text": "Two of four. {waiting} would wait. Is it worth it? Only you can say." }
     ],
     "secrets": [ { "station": "Harbour", "by": "00:10", "keepsake": "lighthouse" } ],
-    "logbook": { "tomorrow": "Friday is the last train, and Wen's dad turns eighty." }
+    "logbook": { "tomorrow": "Friday is the last train on the Northline." }
 }

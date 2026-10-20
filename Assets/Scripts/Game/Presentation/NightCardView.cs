@@ -13,8 +13,9 @@ namespace LastTrainHome.Game.Presentation
     {
         [SerializeField] private TMP_Text _kicker;
         [SerializeField] private TMP_Text _day;
-        [SerializeField, Tooltip("Portrait and line of the passenger whose big night it is.")] private GameObject _featured;
+        [SerializeField, Tooltip("Portraits and line of the passengers whose big night it is.")] private GameObject _featured;
         [SerializeField] private PortraitView _featuredPortrait;
+        [SerializeField, Tooltip("For a night two passengers share; hidden otherwise.")] private PortraitView _secondPortrait;
         [SerializeField] private TMP_Text _featuredLine;
         [SerializeField] private TMP_Text _lines;
         [SerializeField, Tooltip("Inactive; cloned for each day.")] private WeekTileView _dayTemplate;
@@ -33,10 +34,16 @@ namespace LastTrainHome.Game.Presentation
             Reveal(0.5f);
             _kicker.SetText(model.Kicker);
             _day.SetText(model.Day);
-            _featured.SetActive(model.Featured != null);
-            if (model.Featured != null)
+            _featured.SetActive(model.Featured.Count > 0);
+            _secondPortrait.gameObject.SetActive(model.Featured.Count > 1);
+            if (model.Featured.Count > 0)
             {
-                _featuredPortrait.Show(model.Featured, _art);
+                _featuredPortrait.Show(model.Featured[0], _art);
+                if (model.Featured.Count > 1)
+                {
+                    _secondPortrait.Show(model.Featured[1], _art);
+                }
+
                 _featuredLine.SetText(model.FeaturedLine);
             }
 

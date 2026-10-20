@@ -23,7 +23,7 @@
     "rules": { "asks": 1 },
     "nightCard": {
         "kicker": "Night {night} of {nights}",
-        "featured": "Tomás",
+        "featured": [ "Tomás" ],
         "featuredLine": "Tonight is Tomás's final warning.",
         "lines": [ "A tree's down on the Old Town–Hillside line. Tonight Hillside is only reachable from Riverside.", "Not everyone will make it home on time." ],
         "emphasis": "You decide who waits.",
@@ -90,11 +90,11 @@
                 "line": "He'd fallen asleep. She sat with him anyway, until the nurse said go.",
                 "logLine": "He'd fallen asleep. She sat with him anyway.",
                 "aside": "She steps off without looking back. Then, at the gate, she lifts a hand.",
-                "carry": "Wen boards quieter: “He didn't wake. That's all right.” Friday is her big night, and she hasn't forgotten Tuesday."
+                "carry": "Wen boards quieter: “He didn't wake. That's all right.” Thursday is her big night, and she hasn't forgotten Tuesday."
             },
             "notReached": {
                 "line": "She stood at the locked door and phoned the night desk.",
-                "carry": "Wen boards quieter: “He didn't wake. That's all right.” Friday is her big night, and she hasn't forgotten Tuesday."
+                "carry": "Wen boards quieter: “He didn't wake. That's all right.” Thursday is her big night, and she hasn't forgotten Tuesday."
             }
         }
     ],

@@ -92,8 +92,8 @@ namespace LastTrainHome.Game.Content
                 endings.Add(new Ending(entry.kept, entry.title, entry.line));
             }
 
-            int bigNights = cast.Count(member => member.HasBigNight);
-            for (int kept = 0; kept <= bigNights; kept++)
+            int keepable = Week.KeepableBigNightsOf(cast);
+            for (int kept = 0; kept <= keepable; kept++)
             {
                 if (endings.Count(ending => ending.Kept == kept) != 1)
                 {

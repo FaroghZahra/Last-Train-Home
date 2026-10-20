@@ -16,6 +16,9 @@ namespace LastTrainHome.Game.Flow.Views
         /// <summary>Where they're going and by when.</summary>
         public string Detail { get; set; }
 
+        /// <summary>The destination station's name as it appears in <see cref="Detail"/>, shown in their colour.</summary>
+        public string Destination { get; set; }
+
         /// <summary>Their deadline along the night, 0 at departure and 1 at closing.</summary>
         public float Deadline { get; set; }
 

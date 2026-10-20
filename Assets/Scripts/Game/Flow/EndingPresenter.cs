@@ -82,16 +82,16 @@ namespace LastTrainHome.Game.Flow
             var tiles = new List<WeekDayTile>();
             for (int i = 0; i < _content.Levels.Count; i++)
             {
-                CastMember member = _content.Week.BigNightOf(i);
+                IReadOnlyList<CastMember> members = _content.Week.BigNightsOn(i);
                 string day = _content.Week.Days[i];
-                if (member != null)
+                if (members.Count > 0)
                 {
-                    bool kept = WasKept(member);
                     tiles.Add(new WeekDayTile
                     {
                         Day = day,
-                        Text = Ui.Format(kept ? UiKey.WeekKept : UiKey.WeekMissed, ("name", member.Name)),
-                        Kind = kept ? WeekDayKind.Tonight : WeekDayKind.Unknown,
+                        Text = string.Join("\n", members.Select(member =>
+                            Ui.Format(WasKept(member) ? UiKey.WeekKept : UiKey.WeekMissed, ("name", member.Name)))),
+                        Kind = members.Any(WasKept) ? WeekDayKind.Tonight : WeekDayKind.Unknown,
                     });
                 }
                 else

@@ -64,8 +64,8 @@ namespace LastTrainHome.Game.Content
         internal sealed class NightCard
         {
             public string kicker;
-            public string featured; // optional; the passenger whose big night it is
-            public string featuredLine; // optional; shown beside their portrait
+            public string[] featured; // optional; the passengers whose big night it is, usually one
+            public string featuredLine; // optional; shown beside their portraits
             public string[] lines;
             public string emphasis; // optional; the last, brighter line
             public string footnote; // optional

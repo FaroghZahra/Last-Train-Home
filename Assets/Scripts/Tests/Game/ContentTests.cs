@@ -76,7 +76,7 @@ namespace LastTrainHome.Game.Tests
 
             Assert.That(week.Days, Is.EqualTo(new[] { "Mon", "Tue" }));
             Assert.That(week.FindCastMember("Agnes").BigNightLabel, Is.EqualTo("Ferry"));
-            Assert.That(week.BigNightOf(0).Name, Is.EqualTo("Dev"));
+            Assert.That(week.BigNightsOn(0).Select(member => member.Name), Is.EqualTo(new[] { "Dev" }));
             Assert.That(week.FindKeepsake("ticket").Line, Is.EqualTo("A ticket."));
         }
 

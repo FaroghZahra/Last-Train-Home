@@ -28,7 +28,7 @@
         },
         {
             "name": "Wen",
-            "bigNight": 4,
+            "bigNight": 3,
             "bigNightLabel": "Dad's 80th",
             "epilogueKept": "Wen's dad blew out one candle of eighty. Close enough, he said, and asked for more cake.",
             "epilogueMissed": "Wen's dad slept through his eightieth. She kept him a slice, and the candle."
@@ -51,8 +51,7 @@
         { "id": "photo", "name": "Old photograph", "line": "Keepsake: a photo of the Northline's first train, from the care home's wall." }
     ],
     "endings": [
-        { "kept": 4, "title": "Every one of them", "line": "You kept all four big nights. It cost you plenty of small ones, and they all forgave you." },
-        { "kept": 3, "title": "Three of four", "line": "Three big nights kept. The fourth still rides with you, some nights." },
+        { "kept": 3, "title": "Every night you could", "line": "Three big nights kept, as many as the week allowed. On Thursday you could only be in one place." },
         { "kept": 2, "title": "Half the week", "line": "Two big nights kept, two let go. Nobody could have done it all. You did what you could." },
         { "kept": 1, "title": "One night", "line": "One big night kept. You got a lot of people home on the small ones, though." },
         { "kept": 0, "title": "The long way home", "line": "Every big night slipped past. You still drove them, every night, to the very last train." }

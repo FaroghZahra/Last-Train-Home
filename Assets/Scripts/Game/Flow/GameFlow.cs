@@ -65,10 +65,12 @@ namespace LastTrainHome.Game.Flow
         {
             Level level = _content.Levels[nightIndex].WithCarryOver(EarlierStatus, WasPromised);
             _night = new NightContext(_content, _campaign, nightIndex, level);
-            CastMember bigNight = _content.Week.BigNightOf(nightIndex);
-            if (bigNight != null && level.Night.Passengers.Any(passenger => passenger.Name == bigNight.Name))
+            foreach (CastMember bigNight in _content.Week.BigNightsOn(nightIndex))
             {
-                _campaign.RevealBigNight(bigNight.Name);
+                if (level.Night.Passengers.Any(passenger => passenger.Name == bigNight.Name))
+                {
+                    _campaign.RevealBigNight(bigNight.Name);
+                }
             }
 
             _drawing = new RouteDrawing(_night, _views.RailMap, _views.Route);

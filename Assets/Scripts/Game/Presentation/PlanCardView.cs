@@ -24,6 +24,10 @@ namespace LastTrainHome.Game.Presentation
         [SerializeField] private TMP_Text _detail;
         [SerializeField, Tooltip("Inactive; cloned for each night.")] private Image _pipTemplate;
 
+        [SerializeField, Range(0f, 1f), Tooltip("How much the passenger's colour is darkened for the destination's " +
+                                                "name, so light colours still read on the card.")]
+        private float _destinationDarken = 0.25f;
+
         private TemplateList<Image> _pips;
 
         public void Show(PlanCardModel model, PassengerArt art, UiStyle style)
@@ -33,7 +37,7 @@ namespace LastTrainHome.Game.Presentation
             _name.SetText(model.Name);
             _status.Show(model.Status, style.GetTag(model.Outcome));
             _quote.SetText(model.Quote);
-            _detail.SetText(model.Detail);
+            _detail.SetText(TintDestination(model.Detail, model.Destination, art.GetColor(model.Name)));
 
             PlaceAlongBar(_deadline, model.Deadline);
             _arrival.gameObject.SetActive(model.Arrival.HasValue);
@@ -53,6 +57,22 @@ namespace LastTrainHome.Game.Presentation
                 pips[i].rectTransform.localRotation = Quaternion.Euler(0f, 0f, isBig ? 45f : 0f);
                 pips[i].rectTransform.localScale = Vector3.one * (pip == PipKind.Tonight || pip == PipKind.TonightBig ? 1.25f : 1f);
             }
+        }
+
+        /// <summary>
+        /// Colours the destination's name to match its pin on the map. The last match is the one, since a pickup's
+        /// detail names where they board first.
+        /// </summary>
+        private string TintDestination(string detail, string destination, Color color)
+        {
+            int at = string.IsNullOrEmpty(destination) ? -1 : detail.LastIndexOf(destination, System.StringComparison.Ordinal);
+            if (at < 0)
+            {
+                return detail;
+            }
+
+            string hex = ColorUtility.ToHtmlStringRGB(Color.Lerp(color, Color.black, _destinationDarken));
+            return detail.Substring(0, at) + $"<color=#{hex}>{destination}</color>" + detail.Substring(at + destination.Length);
         }
 
         private static void PlaceAlongBar(RectTransform mark, float along)

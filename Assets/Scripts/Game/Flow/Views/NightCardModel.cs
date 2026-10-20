@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace LastTrainHome.Game.Flow.Views
@@ -9,8 +10,8 @@ namespace LastTrainHome.Game.Flow.Views
 
         public string Day { get; set; }
 
-        /// <summary>The passenger whose big night it is, or null.</summary>
-        public string Featured { get; set; }
+        /// <summary>The passengers whose big night it is; empty for none.</summary>
+        public IReadOnlyList<string> Featured { get; set; } = Array.Empty<string>();
 
         public string FeaturedLine { get; set; }
 

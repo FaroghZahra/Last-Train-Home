@@ -295,6 +295,7 @@ namespace LastTrainHome.Editor
             Image featuredPill = _kit.Panel(featuredRow, "Pill", new Color(0.118f, 0.165f, 0.235f));
             UiKit.Row(featuredPill.gameObject, 20f, new RectOffset(18, 30, 18, 18), TextAnchor.MiddleLeft, controlWidth: true);
             PortraitView featuredPortrait = _kit.Portrait(featuredPill.transform, "Portrait", 90f);
+            PortraitView secondPortrait = _kit.Portrait(featuredPill.transform, "Second Portrait", 90f);
             TextMeshProUGUI featuredLine = _kit.Text(featuredPill.transform, "Line", _kit.Bold, 33f, _style.Cream, TextAlignmentOptions.MidlineLeft);
             featuredLine.enableWordWrapping = false;
 
@@ -318,6 +319,7 @@ namespace LastTrainHome.Editor
             UiKit.Wire(view, "_day", day);
             UiKit.Wire(view, "_featured", featuredRow.gameObject);
             UiKit.Wire(view, "_featuredPortrait", featuredPortrait);
+            UiKit.Wire(view, "_secondPortrait", secondPortrait);
             UiKit.Wire(view, "_featuredLine", featuredLine);
             UiKit.Wire(view, "_lines", lines);
             UiKit.Wire(view, "_dayTemplate", tile);
@@ -580,12 +582,13 @@ namespace LastTrainHome.Editor
 
             RectTransform bottom = UiKit.Rect("Bottom", card);
             UiKit.Row(bottom.gameObject, 9f, null, TextAnchor.MiddleLeft);
-            TextMeshProUGUI detail = _kit.Text(bottom, "Detail", _kit.Regular, 18f, new Color(0.29f, 0.23f, 0.18f));
+            // Where they're going and by when is what the player plans around, so it reads as strongly as the name.
+            TextMeshProUGUI detail = _kit.Text(bottom, "Detail", _kit.Bold, 20f, _style.Ink);
             UiKit.Size(detail.gameObject, -1f, -1f, 1f);
             RectTransform pips = UiKit.Rect("Week", bottom);
             UiKit.Row(pips.gameObject, 7f, null, TextAnchor.MiddleRight, controlWidth: false);
             pips.GetComponent<HorizontalLayoutGroup>().childControlHeight = false;
-            UiKit.Size(pips.gameObject, 110f, 16f);
+            UiKit.Size(pips.gameObject, 95f, 16f);
             Image pip = _kit.Image(UiKit.Rect("Pip Template", pips).gameObject, _style.PipAhead, _kit.Circle);
             pip.rectTransform.sizeDelta = new Vector2(13f, 13f);
 

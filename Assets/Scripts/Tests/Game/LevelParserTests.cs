@@ -56,7 +56,7 @@ namespace LastTrainHome.Game.Tests
             NightStory story = LevelParser.Parse(ValidLevel, "Test").Story;
 
             Assert.That(story.AsksAllowed, Is.EqualTo(1));
-            Assert.That(story.NightCard.Featured, Is.EqualTo("Agnes"));
+            Assert.That(story.NightCard.Featured, Is.EqualTo(new[] { "Agnes" }));
             Assert.That(story.NightCard.Lines, Is.EqualTo(new[] { "Someone waits." }));
             Assert.That(story.Platform.Headline, Is.EqualTo("Meet them."));
             Assert.That(story.LogbookTomorrow, Is.EqualTo("Tomorrow is tight."));

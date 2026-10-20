@@ -62,7 +62,7 @@
             "deadline": "00:40",
             "platform": "Riverside. The care home locks the door at twenty to.",
             "planQuote": "The door locks at twenty to.",
-            "ask": "Dad's eighty on Friday. He keeps asking what day it is, so I keep telling him.",
+            "ask": "Dad's eighty on Thursday. He keeps asking what day it is, so I keep telling him.",
             "revealsBigNight": true,
             "onTime": { "line": "He was asleep. She left the crossword by his glasses." },
             "late": { "line": "The night nurse let her wave through the glass." },

@@ -24,7 +24,7 @@
     "rules": { "asks": 1 },
     "nightCard": {
         "kicker": "Night {night} of {nights}",
-        "featured": "Agnes",
+        "featured": [ "Agnes" ],
         "featuredLine": "Tonight her grandson's ferry leaves at half past.",
         "lines": [
             "Market reopens tonight, with a line on to Hillside. The tree is still down between Old Town and Hillside.",
@@ -69,7 +69,7 @@
             "says": "00:25",
             "platform": "Brought the crossword. He does the across, I do the down.",
             "planQuote": "He does the across, I do the down.",
-            "ask": "The nurse rang. He's flagging, so ten past or he'll be asleep. Friday he'll have a cake if he's up to it.",
+            "ask": "The nurse rang. He's flagging, so ten past or he'll be asleep. Thursday he'll have a cake if he's up to it.",
             "onTime": { "line": "They did eleven across together. He got it first." },
             "late": { "line": "He'd gone to sleep. She filled in the across for him, in his handwriting." },
             "notReached": { "line": "She did the crossword alone on the train. She left the across blank." }
@@ -133,5 +133,5 @@
         { "when": "onTime", "count": 2, "text": "Two home. {waiting} would wait. Is it worth it? Only you can say." }
     ],
     "secrets": [ { "station": "Market", "by": "00:15", "keepsake": "ribbon" } ],
-    "logbook": { "tomorrow": "Thursday is Priya's first real gig. She's on at quarter past." }
+    "logbook": { "tomorrow": "Thursday is Priya's first real gig, and Wen's dad turns eighty. Old Town and Riverside, fifteen minutes apart." }
 }

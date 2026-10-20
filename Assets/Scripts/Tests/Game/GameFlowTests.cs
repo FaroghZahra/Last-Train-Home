@@ -167,7 +167,7 @@ namespace LastTrainHome.Game.Tests
 
             _logbook.Next();
             Assert.That(_nightCard.Shown.Day, Is.EqualTo("Tuesday"));
-            Assert.That(_nightCard.Shown.Featured, Is.EqualTo("Tomás"));
+            Assert.That(_nightCard.Shown.Featured, Is.EqualTo(new[] { "Tomás" }));
             Assert.That(_nightCard.Shown.Week[0].Text, Is.EqualTo("4 of 4 home"));
         }
 

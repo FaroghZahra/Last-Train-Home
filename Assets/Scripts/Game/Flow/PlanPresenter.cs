@@ -185,6 +185,7 @@ namespace LastTrainHome.Game.Flow
                 Quote = passenger.Story.PlanQuote,
                 Detail = Ui.Format(UiKey.PlanCard, ("destination", _night.Trip(passenger)),
                     ("deadline", passenger.Deadline.ToString())),
+                Destination = _night.StationName(passenger.DestinationStationId),
                 Deadline = AlongTheNight(passenger.Deadline),
                 Arrival = outcome.IsReached ? AlongTheNight(outcome.Arrival) : (float?)null,
                 IsPromised = passenger.Name == Session.PromisedPassenger,

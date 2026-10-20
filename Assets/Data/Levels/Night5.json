@@ -25,9 +25,12 @@
     "rules": { "asks": 1 },
     "nightCard": {
         "kicker": "Night {night} of {nights} · the last train",
-        "featured": "Wen",
-        "featuredLine": "Tonight her dad turns eighty.",
-        "lines": [ "Market is fully open for the last night: quick lines to Harbour and Hillside.", "Mina is waiting at Market for a lift to Old Town.", "Not everyone will make it home on time." ],
+        "lines": [
+            "No big nights left. Just the last train, and everyone still riding it.",
+            "Market is fully open for the last night: quick lines to Harbour and Hillside.",
+            "Mina is waiting at Market for a lift to Old Town.",
+            "Not everyone will make it home on time."
+        ],
         "emphasis": "You decide who waits.",
         "footnote": "The care home at Riverside is giving away its old railway photos, until ten past."
     },
@@ -37,12 +40,12 @@
             "name": "Wen",
             "destination": "Riverside",
             "deadline": "00:20",
-            "platform": "Eighty tonight. The nurse is keeping him up for the cake until twenty past.",
-            "planQuote": "Cake at twenty past.",
-            "ask": "He won't know it's his birthday. But I will. That's the deal we made years ago.",
-            "onTime": { "line": "He blew out one candle. Then he said her name, clear as anything.", "logLine": "He blew out one candle, and said her name.", "keepsake": "candle" },
-            "late": { "line": "The cake was in the fridge. She sang to him anyway, quietly, while he slept." },
-            "notReached": { "line": "She called. The nurse held the phone to his ear for the whole song." }
+            "platform": "He's still talking about the candle. He asked the nurse who drives the train.",
+            "planQuote": "He's still talking about the candle.",
+            "ask": "He called me by Mum's name this morning. I didn't correct him. It was a nice morning.",
+            "onTime": { "line": "He was awake, with cake on his chin. “Same again tomorrow?” he asked." },
+            "late": { "line": "He was asleep, the candle stub on the bedside table." },
+            "notReached": { "line": "She phoned. He told the nurse he'd had a birthday. Twice." }
         },
         {
             "name": "Agnes",
@@ -108,8 +111,11 @@
             "if": { "night": "Night4", "passenger": "Wen", "status": "missed" },
             "passenger": "Wen",
             "deadline": "00:15",
-            "platform": "He was asleep by twenty past last night. Quarter past, the nurse says. Please.",
-            "planQuote": "Quarter past, the nurse says."
+            "platform": "He slept through it last night. The nurse kept the cake back. Quarter past, and he'll have it with me.",
+            "planQuote": "Quarter past. The cake's kept back.",
+            "onTime": { "line": "A day late, one candle. He blew it out and asked whose birthday it was." },
+            "late": { "line": "Asleep again. She ate a slice in the corridor, for him." },
+            "notReached": { "line": "She phoned. The nurse said he'd asked whose cake it was." }
         },
         {
             "if": { "night": "Night4", "passenger": "Priya", "status": "missed" },
@@ -125,8 +131,8 @@
         }
     ],
     "coach": [
-        { "when": "stops", "count": 1, "text": "Tonight is Wen's dad's eightieth. You promised {promised}. Click a glowing station to start." },
-        { "when": "onTime", "count": 3, "text": "Three is the most anyone can do tonight, and every way to get three leaves Wen waiting. Saving her costs someone else." },
+        { "when": "stops", "count": 1, "text": "The last train on the Northline. You promised {promised}. Click a glowing station to start." },
+        { "when": "onTime", "count": 3, "text": "Three is the most anyone can do tonight. On the last train, you still decide who waits." },
         { "when": "promiseBroken", "text": "You promised {promised}. On this route, they won't make it." },
         { "when": "onTime", "count": 2, "text": "Two home. {waiting} would wait. Is it worth it? Only you can say." }
     ],

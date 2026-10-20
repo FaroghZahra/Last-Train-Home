@@ -48,7 +48,14 @@ namespace LastTrainHome.Game.Content
         /// <summary>The keepsake with this id, or null.</summary>
         public Keepsake FindKeepsake(string id) => Keepsakes.FirstOrDefault(keepsake => keepsake.Id == id);
 
-        /// <summary>Whose big night falls on this night, or null.</summary>
-        public CastMember BigNightOf(int nightIndex) => Cast.FirstOrDefault(member => member.BigNight == nightIndex);
+        /// <summary>Whose big nights fall on this night, in cast order; empty for none. Two can share a night.</summary>
+        public IReadOnlyList<CastMember> BigNightsOn(int nightIndex) =>
+            Cast.Where(member => member.BigNight == nightIndex).ToArray();
+
+        /// <summary>The most big nights a week can keep: only one of those sharing a night can be kept.</summary>
+        public int KeepableBigNights => KeepableBigNightsOf(Cast);
+
+        internal static int KeepableBigNightsOf(IEnumerable<CastMember> cast) =>
+            cast.Where(member => member.HasBigNight).Select(member => member.BigNight).Distinct().Count();
     }
 }

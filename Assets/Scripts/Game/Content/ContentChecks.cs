@@ -38,10 +38,12 @@ namespace LastTrainHome.Game.Content
                     }
                 }
 
-                string featured = level.Story.NightCard.Featured;
-                if (featured != null && level.Night.Passengers.All(passenger => passenger.Name != featured))
+                foreach (string featured in level.Story.NightCard.Featured)
                 {
-                    yield return $"{where}: the night card features {featured}, who isn't riding.";
+                    if (level.Night.Passengers.All(passenger => passenger.Name != featured))
+                    {
+                        yield return $"{where}: the night card features {featured}, who isn't riding.";
+                    }
                 }
 
                 foreach (Secret secret in level.Secrets)

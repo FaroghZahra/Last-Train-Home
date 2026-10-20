@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using LastTrainHome.Domain.Passengers;
 using LastTrainHome.Domain.Session;
 using LastTrainHome.Game.Content;
@@ -20,8 +21,12 @@ namespace LastTrainHome.Game.Flow
             for (int i = 0; i < night.NightCount; i++)
             {
                 string day = night.ShortDay(i);
-                CastMember bigNight = night.Week.BigNightOf(i);
-                bool known = bigNight != null && (i <= night.NightIndex || night.Campaign.IsBigNightRevealed(bigNight.Name));
+                int dayIndex = i;
+                string[] knownNames = night.Week.BigNightsOn(i)
+                    .Where(member => dayIndex <= night.NightIndex || night.Campaign.IsBigNightRevealed(member.Name))
+                    .Select(member => member.Name)
+                    .ToArray();
+                bool known = knownNames.Length > 0;
 
                 if (i < night.NightIndex)
                 {
@@ -29,7 +34,7 @@ namespace LastTrainHome.Game.Flow
                     continue;
                 }
 
-                string text = known ? bigNight.Name : ui.Get(i == night.NightIndex ? UiKey.WeekTonight : UiKey.WeekUnknown);
+                string text = known ? string.Join(ui.Get(UiKey.ListAnd), knownNames) : ui.Get(i == night.NightIndex ? UiKey.WeekTonight : UiKey.WeekUnknown);
                 if (i == night.NightCount - 1)
                 {
                     text = known ? text + ui.Get(UiKey.ListDot) + ui.Get(UiKey.WeekLastTrain) : ui.Get(UiKey.WeekLastTrain);
